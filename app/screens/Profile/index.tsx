@@ -8,7 +8,9 @@ function Profile(props) {
   const {navigation} = props;
   // @ts-ignore
   const QuickActionItem = ({text, route}) => (
-    <TouchableOpacity onPress={() => navigation.navigate(route)}  activeOpacity={0.7}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate(route)}
+      activeOpacity={0.7}>
       <View style={{alignItems: 'center'}}>
         <View style={styles.small}></View>
         <Text style={styles.text}>{text}</Text>
@@ -17,7 +19,9 @@ function Profile(props) {
   );
   // @ts-ignore
   const ActionItem = ({text, route}) => (
-    <TouchableOpacity onPress={() => navigation.navigate(route)}  activeOpacity={0.7}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate(route)}
+      activeOpacity={0.7}>
       <View style={styles.cadre}>
         <View style={styles.icon}></View>
         <Text style={styles.text} numberOfLines={2}>
@@ -86,6 +90,7 @@ function Profile(props) {
           </View>
 
           {/* List actions  */}
+
           <View style={styles.allactions}>
             <Text style={styles.title}>Payment List</Text>
             <FlatList

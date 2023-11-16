@@ -20,6 +20,7 @@ import PersonalDetaill from '../screens/PersonalDetaill/Recharge';
 import Recharge from '../screens/Recharge';
 import Withdraw from '../screens/Withdraw';
 import AddressUsdt from '../screens/AddressUsdt/Recharge';
+import Payment from '../screens/Payment';
 
 function AuthNavigator() {
   const Stack = createStackNavigator();
@@ -130,6 +131,15 @@ function AuthNavigator() {
         component={PersonalDetaill}
         options={{
           title: 'Personal Detail',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="Payment"
+        component={Payment}
+        options={{
+          title: 'Payment',
           headerTitleAlign: 'center',
         }}
       />

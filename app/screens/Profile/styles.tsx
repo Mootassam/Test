@@ -71,10 +71,12 @@ export default StyleSheet.create({
     borderRadius: 24,
     paddingTop: 61,
     paddingLeft: 26,
-
     display: 'flex',
     flexDirection: 'column',
   },
+
+  
+
 
   title: {
     fontSize: 16.1,

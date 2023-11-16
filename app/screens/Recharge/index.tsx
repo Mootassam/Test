@@ -4,7 +4,11 @@ import Textinput from '../../components/TextInput';
 import Button from '../../components/Button';
 import FastImage from 'react-native-fast-image';
 import {Images} from '../../../config/images';
-function Recharge() {
+function Recharge(props: any) {
+  const {navigation} = props;
+  const checkPayemnt = () => {
+    navigation.navigate('Payment');
+  };
   return (
     <View
       style={{
@@ -22,8 +26,32 @@ function Recharge() {
         style={{width: 330, height: 300, alignSelf: 'center'}}
       />
       <Textinput placeholder="Write the amount" />
+      <View style={{marginTop: 20, gap: 15}}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <Text>exchange rate</Text>
+          <Text style={{color: 'black', fontWeight: '500', fontSize: 14}}>
+            1:3.23
+          </Text>
+        </View>
 
-      <Button text="Recharge Now" />
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+          }}>
+          <Text>Payment amount</Text>
+          <Text style={{color: 'black', fontWeight: '500', fontSize: 14}}>
+            USDT 22.3
+          </Text>
+        </View>
+      </View>
+      <Button text="Recharge Now" onPress={checkPayemnt} />
     </View>
   );
 }
