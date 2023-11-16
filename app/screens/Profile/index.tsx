@@ -30,6 +30,7 @@ function Profile(props) {
       </View>
     </TouchableOpacity>
   );
+
   const quickActions = [
     {text: 'Exchange', route: 'Exchange'},
     {text: 'Recharge', route: 'Recharge'},
