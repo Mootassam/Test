@@ -1,44 +1,57 @@
-import React, {useState} from 'react';
-import {Text, View} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import React, {useState, memo} from 'react';
+import {View, FlatList} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-// @ts-ignore
-import {Route, NavigationState} from 'react-native-tab-view/types';
 import styles from './styles';
-const Tasks = () => (
-  <View>
-    <View></View>
-  </View>
-);
+import SingleTask from '../../components/SingleTask';
 
-const TasksDone = () => (
-  <ScrollView>
-    <View style={styles.tasksDone}>
-      <View style={styles.content}></View>
-    </View>
-  </ScrollView>
-);
+const Tasks = () => {
+  const data = Array.from({length: 9}, (_, index) => ({key: String(index)}));
 
-const initialLayout = {width: 360};
+  const renderItem = () => <SingleTask />;
+
+  return (
+    <FlatList
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={item => item.key}
+      contentContainerStyle={styles.tasksDone}
+    />
+  );
+};
+
+const TasksDone = () => {
+  const data = Array.from({length: 4}, (_, index) => ({key: String(index)}));
+
+  const renderItem = () => <SingleTask />;
+
+  return (
+    <FlatList
+      data={data}
+      renderItem={renderItem}
+      keyExtractor={item => item.key}
+      contentContainerStyle={styles.tasksDone}
+    />
+  );
+};
 
 const renderTabBar = (props: any) => (
   <TabBar
     {...props}
-    indicatorStyle={{backgroundColor: '#F82A4F'}} // Change the color here
-    style={{backgroundColor: '#252525'}} // Change the background color here
+    indicatorStyle={{backgroundColor: '#F82A4F'}}
+    style={{backgroundColor: '#252525'}}
   />
 );
 
 const TabViewExample = () => {
   const [index, setIndex] = useState(0);
-  const [routes] = useState<Route[]>([
+  const [routes] = useState([
     {key: 'tasks', title: 'Tasks'},
     {key: 'tasksDone', title: 'Tasks Done'},
   ]);
 
   const renderScene = SceneMap({
-    tasks: Tasks,
-    tasksDone: TasksDone,
+    tasks: memo(Tasks),
+    tasksDone: memo(TasksDone),
   });
 
   return (
@@ -46,7 +59,6 @@ const TabViewExample = () => {
       navigationState={{index, routes}}
       renderScene={renderScene}
       onIndexChange={setIndex}
-      initialLayout={initialLayout}
       renderTabBar={renderTabBar}
     />
   );

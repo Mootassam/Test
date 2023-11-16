@@ -12,6 +12,7 @@ import {Rating, AirbnbRating} from 'react-native-ratings';
 import SingleProduct from '../../components/SingleProduct';
 
 function Home(props: any) {
+
   const {navigation} = props;
   const images = [
     'https://source.unsplash.com/1024x768/?nature',
@@ -25,7 +26,7 @@ function Home(props: any) {
 
       <View style={styles.categories}>
         <Text style={styles.Textcategories}>Categories</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Categories')}>
+        <TouchableOpacity onPress={() => navigation.navigate('Categories')}  activeOpacity={0.7}> 
           <Text> Show All</Text>
         </TouchableOpacity>
       </View>

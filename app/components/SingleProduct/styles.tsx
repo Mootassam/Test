@@ -3,10 +3,8 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   singleProduct: {
     flexBasis: '47%',
-    height: 234,
+    height: 250,
     backgroundColor: '#fff',
-    paddingLeft: 10,
-    paddingRight: 10,
   },
 
   vip0: {
@@ -34,6 +32,8 @@ export default StyleSheet.create({
   imageProduct: {
     alignSelf: 'center',
     resizeMode: 'center',
+    width: '100%',
+    height: 140,
   },
   groupProducts: {
     marginBottom: 20,
@@ -43,7 +43,12 @@ export default StyleSheet.create({
     fontSize: 15,
     color: '#000',
     fontWeight: '600',
-    textAlign: 'center',
     paddingBottom: 12,
+  },
+  payment: {fontSize: 14},
+  amount: {
+    fontSize: 14,
+    color: '#85BB65',
+    fontWeight: '800',
   },
 });

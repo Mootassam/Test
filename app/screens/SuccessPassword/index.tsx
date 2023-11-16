@@ -16,6 +16,7 @@ function SuccessPassword(props: any) {
 
       <TouchableOpacity
         style={styles.Login}
+        activeOpacity={0.7}
         onPress={() => navigation.navigate('Login')}>
         <Text style={styles.textLogin}>Back to login</Text>
       </TouchableOpacity>

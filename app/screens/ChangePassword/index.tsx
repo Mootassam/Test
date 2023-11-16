@@ -24,6 +24,7 @@ function ChangePassword(props: {navigation: any}) {
         </View>
         <TouchableOpacity
           style={styles.Login}
+          activeOpacity={0.7}
           onPress={() => navigation.navigate('SuccessPassword')}>
           <Text style={styles.textLogin}>Reset Password</Text>
         </TouchableOpacity>

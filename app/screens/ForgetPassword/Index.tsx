@@ -24,6 +24,7 @@ function ForgetPassword(props: {navigation: any}) {
         </View>
         <TouchableOpacity
           style={styles.Login}
+          activeOpacity={0.7}
           onPress={() => navigation.navigate('Otp')}>
           <Text style={styles.textLogin}>Send Code</Text>
         </TouchableOpacity>

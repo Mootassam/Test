@@ -14,6 +14,12 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import CategoriesDetail from '../screens/CategoriesDetail';
 import DetaillProduct from '../screens/DetaillProduct';
 import WriteReview from '../screens/WriteReview';
+import Exchange from '../screens/Recharge';
+import History from '../screens/History/Recharge';
+import PersonalDetaill from '../screens/PersonalDetaill/Recharge';
+import Recharge from '../screens/Recharge';
+import Withdraw from '../screens/Withdraw';
+import AddressUsdt from '../screens/AddressUsdt/Recharge';
 
 function AuthNavigator() {
   const Stack = createStackNavigator();
@@ -90,14 +96,6 @@ function AuthNavigator() {
         component={DetaillProduct}
         options={{
           headerTitleAlign: 'center',
-          headerRight: () => (
-            <Icon
-              name="filter"
-              color={'white'}
-              size={17}
-              style={{marginRight: 20}}
-            />
-          ),
         }}
       />
 
@@ -107,14 +105,58 @@ function AuthNavigator() {
         options={{
           title: 'Write Reviews',
           headerTitleAlign: 'center',
-          headerRight: () => (
-            <Icon
-              name="filter"
-              color={'white'}
-              size={17}
-              style={{marginRight: 20}}
-            />
-          ),
+        }}
+      />
+
+      <Stack.Screen
+        name="Exchange"
+        component={Exchange}
+        options={{
+          title: 'Exchange',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="History"
+        component={History}
+        options={{
+          title: 'History',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="PersonalDetaill"
+        component={PersonalDetaill}
+        options={{
+          title: 'Personal Detail',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
+        name="Recharge"
+        component={Recharge}
+        options={{
+          title: 'Recharge',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="Withdraw"
+        component={Withdraw}
+        options={{
+          title: 'Withdraw',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="AddressUsdt"
+        component={AddressUsdt}
+        options={{
+          title: 'Address Usdt',
+          headerTitleAlign: 'center',
         }}
       />
 

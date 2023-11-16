@@ -1,7 +1,8 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
 import styles from './styles';
+import Textinput from '../../components/TextInput';
+import Button from '../../components/Button';
 
 function Login(props: {navigation: any}) {
   const {navigation} = props;
@@ -15,17 +16,15 @@ function Login(props: {navigation: any}) {
 
       <View>
         <View style={styles.ViewInput}>
-          <TextInput placeholder="Enter your email" style={styles.input} />
-          <TextInput placeholder="Enter your Password" style={styles.input} />
+          <Textinput placeholder="Enter your email" style={styles.input} />
+          <Textinput placeholder="Enter your password" style={styles.input} />
         </View>
         <Text
           style={styles.textForgetPassword}
           onPress={() => navigation.navigate('Forgetpassword')}>
           Forget Password?
         </Text>
-        <TouchableOpacity style={styles.Login}>
-          <Text style={styles.textLogin}>Login</Text>
-        </TouchableOpacity>
+        <Button text="login" />
       </View>
       <View style={styles.noAccount}>
         <Text>Don't have an account? </Text>

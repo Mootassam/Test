@@ -53,7 +53,7 @@ function BottomTabNavigator() {
           headerTitleAlign: 'center',
 
           tabBarIcon: ({color, size}) => (
-            <TouchableOpacity>
+            <TouchableOpacity  activeOpacity={0.7}>
               <View
                 style={{
                   borderRadius: 50,
@@ -73,7 +73,7 @@ function BottomTabNavigator() {
         component={Team}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="handshake" size={size} color={color} />
+            <Icon name="wallet" size={size} color={color} />
           ),
         }}
       />

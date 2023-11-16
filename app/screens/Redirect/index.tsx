@@ -14,11 +14,13 @@ function Redirect(props: {navigation: any}) {
         <View style={styles.buttonStyle}>
           <TouchableOpacity
             onPress={() => navigation.navigate('Login')}
-            style={styles.Login}>
+            style={styles.Login}
+            activeOpacity={0.7}>
             <Text style={styles.textLogin}>Login</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.Register}
+            activeOpacity={0.7}
             onPress={() => navigation.navigate('Register')}>
             <Text style={styles.textregister}>Register</Text>
           </TouchableOpacity>

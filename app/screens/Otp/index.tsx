@@ -26,6 +26,7 @@ function OTP(props: {navigation: any}) {
         </View>
         <TouchableOpacity
           style={styles.Login}
+          activeOpacity={0.7}
           onPress={() => navigation.navigate('ChangePassword')}>
           <Text style={styles.textLogin}>Verify</Text>
         </TouchableOpacity>
