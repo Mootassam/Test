@@ -4,26 +4,33 @@ import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import styles from './styles';
 import LinearGradient from 'react-native-linear-gradient';
 // @ts-ignore
+import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
+
+// @ts-ignore
 function Profile(props) {
   const {navigation} = props;
   // @ts-ignore
-  const QuickActionItem = ({text, route}) => (
+  const QuickActionItem = ({text, route, icon}) => (
     <TouchableOpacity
       onPress={() => navigation.navigate(route)}
       activeOpacity={0.7}>
       <View style={{alignItems: 'center'}}>
-        <View style={styles.small}></View>
+        <View style={styles.small}>
+          <Icon name={icon} size={25} />
+        </View>
         <Text style={styles.text}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
   // @ts-ignore
-  const ActionItem = ({text, route}) => (
+  const ActionItem = ({text, route, icon}) => (
     <TouchableOpacity
       onPress={() => navigation.navigate(route)}
       activeOpacity={0.7}>
       <View style={styles.cadre}>
-        <View style={styles.icon}></View>
+        <View style={styles.icon}>
+          <Icon name={icon} size={25} />
+        </View>
         <Text style={styles.text} numberOfLines={2}>
           {text}
         </Text>
@@ -32,28 +39,28 @@ function Profile(props) {
   );
 
   const quickActions = [
-    {text: 'Exchange', route: 'Exchange'},
-    {text: 'Recharge', route: 'Recharge'},
-    {text: 'Withdraw', route: 'Withdraw'},
-    {text: 'History', route: 'History'},
+    {text: 'Exchange', route: 'Exchange', icon: 'exchange-alt'},
+    {text: 'Recharge', route: 'Recharge', icon: ''},
+    {text: 'Withdraw', route: 'Withdraw', icon: ''},
+    {text: 'History', route: 'History', icon: 'history'},
   ];
   const paymentList = [
-    {text: 'Personal', route: 'Redirect'},
-    {text: 'Video', route: 'Redirect'},
-    {text: 'Investing', route: 'Redirect'},
-    {text: 'Lottery', route: 'Lottery'},
-    {text: 'Company profile', route: 'Redirect'},
-    {text: 'FAQ', route: 'Redirect'},
-    {text: 'USDT', route: 'Redirect'},
-    {text: 'Logout', route: 'Redirect'},
+    {text: 'Personal', route: 'Redirect', icon: 'user'},
+    {text: 'Video', route: 'Redirect', icon: 'video'},
+    {text: 'Investing', route: 'Redirect', icon: 'hand-holding-usd'},
+    {text: 'Lottery', route: 'Lottery', icon: 'dice-four'},
+    {text: 'Company profile', route: 'Redirect', icon: 'building'},
+    {text: 'FAQ', route: 'Redirect', icon: 'question'},
+    {text: 'USDT', route: 'Redirect', icon: 'dollar-sign'},
+    {text: 'Logout', route: 'Redirect', icon: 'sign-out-alt'},
   ];
   // @ts-ignore
   const renderQuickActionItem = ({item}) => (
-    <QuickActionItem text={item.text} route={item.route} />
+    <QuickActionItem text={item.text} route={item.route} icon={item.icon} />
   );
   // @ts-ignore
-  const renderActionItem = ({item}) => (
-    <ActionItem text={item.text} route={item.route} />
+  const renderActionItem = ({item,}) => (
+    <ActionItem text={item.text} route={item.route} icon={item.icon} />
   );
   return (
     <LinearGradient

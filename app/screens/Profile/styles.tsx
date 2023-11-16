@@ -75,9 +75,6 @@ export default StyleSheet.create({
     flexDirection: 'column',
   },
 
-  
-
-
   title: {
     fontSize: 16.1,
     fontWeight: '500',
@@ -97,6 +94,9 @@ export default StyleSheet.create({
     height: 54,
     backgroundColor: '#F7F5FA',
     borderRadius: 16,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   text: {
     fontSize: 12,
