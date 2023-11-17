@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-function AddressUsdt() {
+import styles from './styles';
+function Video() {
   return (
     <View>
-      <Text> Address Usdt</Text>
+      <Text>index</Text>
     </View>
   );
 }
 
-export default AddressUsdt;
+export default Video;

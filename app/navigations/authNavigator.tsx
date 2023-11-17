@@ -19,8 +19,15 @@ import History from '../screens/History/Recharge';
 import PersonalDetaill from '../screens/PersonalDetaill/Recharge';
 import Recharge from '../screens/Recharge';
 import Withdraw from '../screens/Withdraw';
-import AddressUsdt from '../screens/AddressUsdt/Recharge';
+import AddressUsdt from '../screens/AddressUsdt';
 import Payment from '../screens/Payment';
+import CompanyProfile from '../screens/CompanyProfile';
+import Video from '../screens/Video';
+import USDT from '../screens/USDT';
+import UpdateProfile from '../screens/UpdateProfile';
+import Investing from '../screens/Investing';
+import Lottery from '../screens/Lottery';
+import FAQ from '../screens/FAQ';
 
 function AuthNavigator() {
   const Stack = createStackNavigator();
@@ -96,6 +103,7 @@ function AuthNavigator() {
         name="DetaillProduct"
         component={DetaillProduct}
         options={{
+          title: 'Detail Product',
           headerTitleAlign: 'center',
         }}
       />
@@ -127,10 +135,72 @@ function AuthNavigator() {
       />
 
       <Stack.Screen
+        name="CompanyProfile"
+        component={CompanyProfile}
+        options={{
+          title: 'Company Profile',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="Video"
+        component={Video}
+        options={{
+          title: 'Video',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="Usdt"
+        component={USDT}
+        options={{
+          title: 'Wallet',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="Updateprofile"
+        component={UpdateProfile}
+        options={{
+          title: 'Update Profile',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="FAQ"
+        component={FAQ}
+        options={{
+          title: 'FAQ',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="Investing"
+        component={Investing}
+        options={{
+          title: 'Investing',
+          headerTitleAlign: 'center',
+        }}
+      />
+      <Stack.Screen
         name="PersonalDetaill"
         component={PersonalDetaill}
         options={{
           title: 'Personal Detail',
+          headerTitleAlign: 'center',
+        }}
+      />
+
+      <Stack.Screen
+        name="Lottery"
+        component={Lottery}
+        options={{
+          title: 'Lottery',
           headerTitleAlign: 'center',
         }}
       />

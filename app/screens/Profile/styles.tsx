@@ -5,7 +5,10 @@ export default StyleSheet.create({
   cricle: {
     width: 45,
     height: 45,
-    backgroundColor: '#D9D9D9',
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
     borderRadius: 50,
   },
   notification: {
@@ -15,6 +18,9 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: '#703DBB',
     borderRadius: 15,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   content: {
     height: '100%',
@@ -88,7 +94,6 @@ export default StyleSheet.create({
     paddingLeft: 6,
     maxWidth: 70,
   },
-
   icon: {
     width: 54,
     height: 54,
@@ -104,10 +109,10 @@ export default StyleSheet.create({
     color: '#000',
     maxWidth: 70,
     textAlign: 'center',
+    fontWeight: '500',
   },
   small: {
-    width: 26,
+    width: 30,
     height: 25,
-    backgroundColor: '#EDE2FD',
   },
 });

@@ -16,7 +16,7 @@ function Profile(props) {
       activeOpacity={0.7}>
       <View style={{alignItems: 'center'}}>
         <View style={styles.small}>
-          <Icon name={icon} size={25} />
+          <Icon name={icon} size={25} color="#7C65BA" />
         </View>
         <Text style={styles.text}>{text}</Text>
       </View>
@@ -40,18 +40,18 @@ function Profile(props) {
 
   const quickActions = [
     {text: 'Exchange', route: 'Exchange', icon: 'exchange-alt'},
-    {text: 'Recharge', route: 'Recharge', icon: ''},
-    {text: 'Withdraw', route: 'Withdraw', icon: ''},
+    {text: 'Recharge', route: 'Recharge', icon: 'paper-plane'},
+    {text: 'Withdraw', route: 'Withdraw', icon: 'vote-yea'},
     {text: 'History', route: 'History', icon: 'history'},
   ];
   const paymentList = [
-    {text: 'Personal', route: 'Redirect', icon: 'user'},
-    {text: 'Video', route: 'Redirect', icon: 'video'},
-    {text: 'Investing', route: 'Redirect', icon: 'hand-holding-usd'},
+    {text: 'Personal', route: 'Updateprofile', icon: 'user'},
+    {text: 'Video', route: 'Video', icon: 'video'},
+    {text: 'Investing', route: 'Investing', icon: 'hand-holding-usd'},
     {text: 'Lottery', route: 'Lottery', icon: 'dice-four'},
-    {text: 'Company profile', route: 'Redirect', icon: 'building'},
-    {text: 'FAQ', route: 'Redirect', icon: 'question'},
-    {text: 'USDT', route: 'Redirect', icon: 'dollar-sign'},
+    {text: 'Company profile', route: 'CompanyProfile', icon: 'building'},
+    {text: 'FAQ', route: 'FAQ', icon: 'question'},
+    {text: 'USDT', route: 'AddressUsdt', icon: 'dollar-sign'},
     {text: 'Logout', route: 'Redirect', icon: 'sign-out-alt'},
   ];
   // @ts-ignore
@@ -59,7 +59,7 @@ function Profile(props) {
     <QuickActionItem text={item.text} route={item.route} icon={item.icon} />
   );
   // @ts-ignore
-  const renderActionItem = ({item,}) => (
+  const renderActionItem = ({item}) => (
     <ActionItem text={item.text} route={item.route} icon={item.icon} />
   );
   return (
@@ -75,8 +75,13 @@ function Profile(props) {
             paddingLeft: 22,
             paddingRight: 22,
           }}>
-          <View style={styles.cricle}></View>
-          <View style={styles.notification}></View>
+          <View style={styles.cricle}>
+            <Icon name="user-circle" size={30} color="white" />
+          </View>
+
+          <View style={styles.notification}>
+            <Icon name="headset" size={30} color="white" />
+          </View>
         </View>
         <View style={styles.amoutncontent}>
           <Text style={styles.availablebalance}>Available Balance</Text>
