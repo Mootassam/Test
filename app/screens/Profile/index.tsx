@@ -85,7 +85,7 @@ function Profile(props) {
         </View>
         <View style={styles.amoutncontent}>
           <Text style={styles.availablebalance}>Available Balance</Text>
-          <Text style={styles.amount}>$450.54</Text>
+          <Text style={styles.amount}>$50.54</Text>
         </View>
         <View style={{display: 'flex', alignItems: 'center', marginTop: 32}}>
           {/* quick actions  */}

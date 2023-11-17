@@ -53,7 +53,7 @@ function BottomTabNavigator() {
           headerTitleAlign: 'center',
 
           tabBarIcon: ({color, size}) => (
-            <TouchableOpacity  activeOpacity={0.7}>
+            <TouchableOpacity activeOpacity={0.7}>
               <View
                 style={{
                   borderRadius: 50,

@@ -164,7 +164,7 @@ function AuthNavigator() {
         name="Updateprofile"
         component={UpdateProfile}
         options={{
-          title: 'Update Profile',
+          title: 'About me',
           headerTitleAlign: 'center',
         }}
       />

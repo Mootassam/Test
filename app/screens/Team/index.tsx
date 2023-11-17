@@ -4,7 +4,7 @@ import {View, Text} from 'react-native';
 function Team() {
   return (
     <View>
-      <Text>Tasks Screen</Text>
+      <Text>The team now is here </Text>
     </View>
   );
 }
