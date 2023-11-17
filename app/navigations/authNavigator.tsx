@@ -19,7 +19,6 @@ import History from '../screens/History/Recharge';
 import PersonalDetaill from '../screens/PersonalDetaill/Recharge';
 import Recharge from '../screens/Recharge';
 import Withdraw from '../screens/Withdraw';
-import AddressUsdt from '../screens/AddressUsdt';
 import Payment from '../screens/Payment';
 import CompanyProfile from '../screens/CompanyProfile';
 import Video from '../screens/Video';
@@ -233,7 +232,7 @@ function AuthNavigator() {
 
       <Stack.Screen
         name="AddressUsdt"
-        component={AddressUsdt}
+        component={USDT}
         options={{
           title: 'Address Usdt',
           headerTitleAlign: 'center',
