@@ -73,7 +73,7 @@ function BottomTabNavigator() {
         component={Team}
         options={{
           tabBarIcon: ({color, size}) => (
-            <Icon name="wallet" size={size} color={color} />
+            <Icon name="users" size={size} color={color} />
           ),
         }}
       />

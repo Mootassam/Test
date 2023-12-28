@@ -87,7 +87,7 @@ function Home(props: any) {
       <View>
         <View style={styles.FeautredProduct}>
           <Text style={styles.Textcategories}>Featured products </Text>
-          <Text>Show All</Text>
+         
         </View>
 
         <View style={styles.scrollViewproduct}>

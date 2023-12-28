@@ -15,4 +15,8 @@ export const Images = {
   vip4: require('../app/assets/images/vip/vip4.png'),
   vip5: require('../app/assets/images/vip/vip5.png'),
   vip6: require('../app/assets/images/vip/vip6.png'),
+  whatsapp: require('../app/assets/images/icons/whatsapp.png'),
+  telegram: require('../app/assets/images/icons/telegram.png'),
+  email: require('../app/assets/images/icons/email.png'),
+  sms: require('../app/assets/images/icons/sms.png'),
 };
