@@ -19,7 +19,6 @@ import History from '../screens/History/Recharge';
 import PersonalDetaill from '../screens/PersonalDetaill/Recharge';
 import Recharge from '../screens/Recharge';
 import Withdraw from '../screens/Withdraw';
-import Payment from '../screens/Payment';
 import CompanyProfile from '../screens/CompanyProfile';
 import Video from '../screens/Video';
 import USDT from '../screens/USDT';
@@ -204,14 +203,6 @@ function AuthNavigator() {
         }}
       />
 
-      <Stack.Screen
-        name="Payment"
-        component={Payment}
-        options={{
-          title: 'Payment',
-          headerTitleAlign: 'center',
-        }}
-      />
       <Stack.Screen
         name="Recharge"
         component={Recharge}

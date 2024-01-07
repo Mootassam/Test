@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   content: {
     margin: 17,
+    marginBottom: 70,
     display: 'flex',
     flexDirection: 'column',
     gap: 25,
@@ -41,41 +42,39 @@ export default StyleSheet.create({
   textwhite: {
     color: '#000',
   },
+  image: {
+    width: '100%',
+    height: 35,
+    marginTop: 15,
+  },
 
-  teamsize: {
+  boxIcon: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-between',
+  },
+  icon: {
+    width: '100%',
+    height: 40,
+  },
+  iconqf: {width: '100%', height: 70},
+  textIcon: {
+    maxWidth: 102,
+    textAlign: 'center',
+    fontSize: 12,
+    paddingTop: 10,
+  },
+
+  listItem: {
+    display: 'flex',
     flexDirection: 'row',
+    alignItems: 'start',
+    gap: 9,
   },
-
-  detaillteam: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: 10,
-  },
-
-  detaillfinance: {
-    backgroundColor: '#000',
-    color: 'white',
-   
-  },
-  teamnumber: {
-    fontSize: 18,
-    fontWeight: '800',
-    color: '#000',
-  },
-
-  dashboard: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 20,
-  },
-
-  earning: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: 10,
+  smallHeader: {
+    textAlign: 'center',
+    fontSize: 9,
+    color: 'black',
+    marginBottom: -10,
   },
 });

@@ -1,78 +1,74 @@
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
-  categories: {
+  ViewTop: {
+    backgroundColor: '#1EA073',
+    width: '100%',
+    height: '50%',
+    position: 'relative',
     display: 'flex',
-    flexDirection: 'row',
-    paddingTop: 16,
-    paddingRight: 16,
-    paddingLeft: 16,
-    justifyContent: 'space-between',
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 50,
+    zIndex: 1,
+    borderBottomRightRadius: 26,
+    borderBottomLeftRadius: 26,
   },
-
-  FeautredProduct: {
-    display: 'flex',
-    flexDirection: 'row',
-    paddingTop: 32,
-    paddingRight: 16,
-    paddingLeft: 16,
-    justifyContent: 'space-between',
+  ViewMeduim: {
+    backgroundColor: '#E8F7F2',
+    width: '90%',
+    height: '100%',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    zIndex: 20,
+    position: 'relative',
   },
-
-  Textcategories: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#000',
+  circleView: {
+    position: 'relative',
+    width: 75,
+    height: 75,
+    backgroundColor: 'white',
+    borderRadius: 50,
+    top: -23,
+    left: 10,
+    borderWidth: 2,
+    borderColor: '#1EA073',
   },
-  scrollViewContent: {
-    gap: 21,
-    paddingHorizontal: 16,
-    marginTop: 16, // Adjust as needed to add spacing at the beginning and end
-  },
-  scrollViewproduct: {
-    paddingStart: 17, // Padding left
-    paddingEnd: 17,
-    paddingTop: 21,
-  },
-  categoriesItem: {
-    width: 52,
-    height: 52,
-    backgroundColor: '#E6F2EA',
+  smallCircle: {
+    width: 30,
+    height: 30,
+    backgroundColor: 'green',
+    borderRadius: 50,
+    bottom: 0,
+    right: -6,
+    position: 'absolute',
+    borderWidth: 2,
+    borderColor: 'white',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 50,
   },
-  categoriesSingle: {
+
+  validation: {
     display: 'flex',
-    flexDirection: 'column',
-    alignContent: 'center',
-    textAlign: 'center',
     alignItems: 'center',
-    gap: 11,
-  },
-  catergorytitle: {
-    color: '#868889',
-    textAlign: 'center',
-    fontSize: 10,
-    fontFamily: '500',
+    justifyContent: 'center',
+    height: 50,
+    position: 'relative',
   },
 
-  listProduct: {
-    flexDirection: 'row', // Arrange items horizontally
-    flexWrap: 'wrap', // Allow items to wrap to the next line
+  approved: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    gap: 18,
-  },
-  groupProducts: {
-    marginBottom: 20,
-  },
-  home: {
-    marginBottom: 60,
-  },
-
-  textInput: {
-    backgroundColor: '#fff',
-    textAlign: 'left',
+    paddingLeft: 20,
+    paddingRight: 20,
+    width: '90%',
+    height: 90,
+    backgroundColor: 'white',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
 });
