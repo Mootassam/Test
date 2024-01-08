@@ -50,13 +50,16 @@ function AuthNavigator() {
       <Stack.Screen
         name="Forgetpassword"
         component={ForgetPassword}
-        options={{title: 'Forget Password'}}
+        options={{headerTitleAlign: 'center', title: 'Forget Password'}}
       />
       <Stack.Screen name="Otp" component={OTP} options={{headerShown: false}} />
       <Stack.Screen
         name="ChangePassword"
         component={ChangePassword}
-        options={{title: 'Change Password'}}
+        options={{
+          headerTitleAlign: 'center',
+          title: 'Change Password',
+        }}
       />
 
       <Stack.Screen
@@ -193,7 +196,6 @@ function AuthNavigator() {
           headerTitleAlign: 'center',
         }}
       />
-
       <Stack.Screen
         name="Lottery"
         component={Lottery}
@@ -202,7 +204,6 @@ function AuthNavigator() {
           headerTitleAlign: 'center',
         }}
       />
-
       <Stack.Screen
         name="Recharge"
         component={Recharge}
@@ -211,7 +212,6 @@ function AuthNavigator() {
           headerTitleAlign: 'center',
         }}
       />
-
       <Stack.Screen
         name="Withdraw"
         component={Withdraw}
@@ -220,7 +220,6 @@ function AuthNavigator() {
           headerTitleAlign: 'center',
         }}
       />
-
       <Stack.Screen
         name="AddressUsdt"
         component={USDT}
@@ -229,7 +228,6 @@ function AuthNavigator() {
           headerTitleAlign: 'center',
         }}
       />
-
       <Stack.Screen
         name="Home"
         component={BottomTabNavigator}

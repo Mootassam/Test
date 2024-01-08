@@ -27,19 +27,19 @@ function UpdateProfile() {
             <TextInput placeholder="+1  202  555  0142 " />
           </View>
           <View style={styles.singleDetail}>
-            <Icon name="phone" size={20} />
+            <Icon name="birthday-cake" size={20} />
             <TextInput placeholder="15/25/1666" />
           </View>
           <View style={styles.singleDetail}>
-            <Icon name="phone" size={20} />
+            <Icon name="flag" size={20} />
             <TextInput placeholder="Nationality" />
           </View>
           <View style={styles.singleDetail}>
-            <Icon name="phone" size={20} />
+            <Icon name="globe" size={20} />
             <TextInput placeholder="Country" />
           </View>
           <View style={styles.singleDetail}>
-            <Icon name="phone" size={20} />
+            <Icon name="map-marker-alt" size={20} />
             <TextInput placeholder="State" />
           </View>
         </View>
