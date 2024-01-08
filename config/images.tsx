@@ -22,4 +22,5 @@ export const Images = {
   ssl: require('../app/assets/images/icons/transaction.png'),
   banner: require('../app/assets/images/icons/banner.png'),
   UAE: require('../app/assets/images/icons/united.png'),
+  user: require('../app/assets/images/user.png'),
 };

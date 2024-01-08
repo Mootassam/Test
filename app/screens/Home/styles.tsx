@@ -34,6 +34,9 @@ export default StyleSheet.create({
     left: 10,
     borderWidth: 2,
     borderColor: '#1EA073',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   smallCircle: {
     width: 30,

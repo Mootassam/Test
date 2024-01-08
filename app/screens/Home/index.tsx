@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Image} from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
+import {Images} from '../../../config/images';
 
 function Home(props: any) {
   const {navigation} = props;
@@ -18,6 +19,11 @@ function Home(props: any) {
               alignItems: 'center',
             }}>
             <View style={styles.circleView}>
+              <Image
+                source={Images.user}
+                style={{width: '100%', height: '100%', borderRadius: 50}}
+                resizeMode="center"
+              />
               <View style={styles.smallCircle}>
                 <Icon name="check" color={'white'} size={14} />
               </View>
