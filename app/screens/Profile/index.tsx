@@ -1,10 +1,10 @@
 import React from 'react';
-import {View, Text, Modal} from 'react-native';
+import {View, Text, Modal, Image} from 'react-native';
 import {FlatList, TouchableOpacity} from 'react-native-gesture-handler';
 import styles from './styles';
-import LinearGradient from 'react-native-linear-gradient';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
+import {Images} from '../../../config/images';
 
 // @ts-ignore
 function Profile(props) {
@@ -26,14 +26,13 @@ function Profile(props) {
   const ActionItem = ({text, route, icon}) => (
     <TouchableOpacity
       onPress={() => navigation.navigate(route)}
-      activeOpacity={0.7}>
+      activeOpacity={0.7}
+      style={{width: '100%'}}>
       <View style={styles.cadre}>
         <View style={styles.icon}>
           <Icon name={icon} size={25} />
+          <Text>{text}</Text>
         </View>
-        <Text style={styles.text} numberOfLines={2}>
-          {text}
-        </Text>
       </View>
     </TouchableOpacity>
   );
@@ -44,14 +43,10 @@ function Profile(props) {
     {text: 'Withdraw', route: 'Withdraw', icon: 'vote-yea'},
     {text: 'History', route: 'History', icon: 'history'},
   ];
+
   const paymentList = [
-    {text: 'Personal', route: 'Updateprofile', icon: 'user'},
-    {text: 'Video', route: 'Video', icon: 'video'},
-    {text: 'Investing', route: 'Investing', icon: 'hand-holding-usd'},
-    {text: 'Lottery', route: 'Lottery', icon: 'dice-four'},
-    {text: 'Company profile', route: 'CompanyProfile', icon: 'building'},
-    {text: 'FAQ', route: 'FAQ', icon: 'question'},
-    {text: 'USDT', route: 'AddressUsdt', icon: 'dollar-sign'},
+    {text: 'Personal Information', route: 'Updateprofile', icon: 'user'},
+    {text: 'Change Password', route: 'ChangePassword', icon: 'lock'},
     {text: 'Logout', route: 'Redirect', icon: 'sign-out-alt'},
   ];
   // @ts-ignore
@@ -63,65 +58,44 @@ function Profile(props) {
     <ActionItem text={item.text} route={item.route} icon={item.icon} />
   );
   return (
-    <LinearGradient
-      colors={['#2D0070', '#3D0095', '#3E0199']}
-      style={styles.linearGradient}>
+    <View style={styles.linearGradient}>
       <View style={styles.content}>
-        <View
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            paddingLeft: 22,
-            paddingRight: 22,
-          }}>
-          <View style={styles.cricle}>
-            <Icon name="user-circle" size={30} color="white" />
-          </View>
-
-          <View style={styles.notification}>
-            <Icon name="headset" size={30} color="white" />
-          </View>
-        </View>
-        <View style={styles.amoutncontent}>
-          <Text style={styles.availablebalance}>Available Balance</Text>
-          <Text style={styles.amount}>$50.54</Text>
-        </View>
-        <View style={{display: 'flex', alignItems: 'center', marginTop: 32}}>
+        <View style={{display: 'flex', marginTop: 10}}>
           {/* quick actions  */}
-          <View style={styles.quickActions}>
-            <FlatList
-              data={quickActions}
-              renderItem={renderQuickActionItem}
-              keyExtractor={(item, index) => index.toString()}
-              horizontal
-              contentContainerStyle={{
-                justifyContent: 'space-around',
-                flexGrow: 1,
-              }}
-            />
-          </View>
-
           {/* List actions  */}
-
           <View style={styles.allactions}>
-            <Text style={styles.title}>Payment List</Text>
-            <FlatList
-              data={paymentList}
-              renderItem={renderActionItem}
-              keyExtractor={(item, index) => index.toString()}
-              contentContainerStyle={{
+            <View
+              style={{
                 display: 'flex',
-                flexDirection: 'row',
-                flexWrap: 'wrap',
-                columnGap: 33,
-                rowGap: 5,
-              }}
-            />
+                alignItems: 'center',
+                paddingBottom: 19,
+              }}>
+              <Image
+                source={Images.UAE}
+                style={{height: 160}}
+                resizeMode="contain"
+              />
+            </View>
+            <View>
+              <Text style={{fontSize: 12}}>
+                (*) Review your personal details here. It's important to ensure
+                that your information is accurate for a smooth visa application
+                process.
+              </Text>
+
+              <FlatList
+                data={paymentList}
+                renderItem={renderActionItem}
+                keyExtractor={(item, index) => index.toString()}
+                contentContainerStyle={{
+                  display: 'flex',
+                }}
+              />
+            </View>
           </View>
         </View>
       </View>
-    </LinearGradient>
+    </View>
   );
 }
 

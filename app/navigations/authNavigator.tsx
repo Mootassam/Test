@@ -56,7 +56,7 @@ function AuthNavigator() {
       <Stack.Screen
         name="ChangePassword"
         component={ChangePassword}
-        options={{headerShown: false}}
+        options={{title: 'Change Password'}}
       />
 
       <Stack.Screen

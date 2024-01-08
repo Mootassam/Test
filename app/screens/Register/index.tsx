@@ -18,7 +18,6 @@ function Register(props: {navigation: any}) {
           <TextInput placeholder="Email" style={styles.input} />
           <TextInput placeholder="Password" style={styles.input} />
           <TextInput placeholder="Confirm password" style={styles.input} />
-          <TextInput placeholder="Invitation code" style={styles.input} />
         </View>
         <TouchableOpacity style={styles.Login}  activeOpacity={0.7}>
           <Text style={styles.textLogin}>Register</Text>

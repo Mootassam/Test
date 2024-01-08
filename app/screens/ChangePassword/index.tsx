@@ -1,34 +1,32 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {View, Text, TextInput} from 'react-native';
 import styles from './styles';
 
-function ChangePassword(props: {navigation: any}) {
-  const {navigation} = props;
+import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
+import Button from '../../components/Button';
+
+function ChangePassword() {
   return (
-    <View style={styles.LoginComponenet}>
-      <Text
-        style={styles.textWelcome}
-        onPress={() => navigation.navigate('Home')}>
-        Create new password
-      </Text>
-
-      <Text style={styles.forgetPassword}>
-        Your new password must be unique from those previously used.
-      </Text>
-
+    <View style={styles.content}>
       <View>
-        <View style={styles.ViewInput}>
-          <TextInput placeholder="New Password" style={styles.input} />
-          <TextInput placeholder="Confirm Password" style={styles.input} />
+        <Text style={styles.title}>Change Password</Text>
+        <View style={styles.details}>
+          <View style={styles.singleDetail}>
+            <Icon name="lock" size={20} />
+            <TextInput placeholder="Current password" secureTextEntry={true} />
+          </View>
+          <View style={styles.singleDetail}>
+            <Icon name="lock" size={20} />
+            <TextInput placeholder="New password" secureTextEntry={true} />
+          </View>
+          <View style={styles.singleDetail}>
+            <Icon name="lock" size={20} />
+            <TextInput placeholder="Confirm password" secureTextEntry={true} />
+          </View>
         </View>
-        <TouchableOpacity
-          style={styles.Login}
-          activeOpacity={0.7}
-          onPress={() => navigation.navigate('SuccessPassword')}>
-          <Text style={styles.textLogin}>Reset Password</Text>
-        </TouchableOpacity>
       </View>
+
+      <Button text="Save Settings" />
     </View>
   );
 }

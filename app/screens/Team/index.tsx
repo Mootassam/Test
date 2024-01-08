@@ -25,7 +25,10 @@ function Team() {
                 style={styles.icon}
                 resizeMode="contain"
               />
-              <Text style={styles.textIcon}>1.2M Happy Customers</Text>
+              <Text style={styles.textIcon}>
+                <Text style={{fontWeight: 'bold', color: 'black'}}>1.2M </Text>
+                Happy Customers
+              </Text>
             </View>
 
             <View style={styles.boxIcon}>
@@ -34,7 +37,10 @@ function Team() {
                 style={styles.icon}
                 resizeMode="contain"
               />
-              <Text style={styles.textIcon}>99% On Time Delivery</Text>
+              <Text style={styles.textIcon}>
+                <Text style={{fontWeight: 'bold', color: 'black'}}>99%</Text>
+                On Time Delivery
+              </Text>
             </View>
 
             <View style={styles.boxIcon}>
@@ -43,7 +49,12 @@ function Team() {
                 style={styles.icon}
                 resizeMode="contain"
               />
-              <Text style={styles.textIcon}>10 Years of Experience</Text>
+              <Text style={styles.textIcon}>
+                <Text style={{fontWeight: 'bold', color: 'black'}}>
+                  10 Years{' '}
+                </Text>
+                of Experience
+              </Text>
             </View>
 
             <View style={styles.boxIcon}>

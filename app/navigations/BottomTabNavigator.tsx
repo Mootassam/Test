@@ -10,7 +10,7 @@ function BottomTabNavigator() {
     <Tab.Navigator
       screenOptions={() => ({
         headerShown: false,
-        tabBarActiveTintColor: '#FF0000',
+        tabBarActiveTintColor: '#a2703d',
         tabBarInactiveTintColor: '#252525',
         tabBarShowLabel: false,
         tabBarStyle: {

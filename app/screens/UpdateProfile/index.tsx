@@ -17,33 +17,33 @@ function UpdateProfile() {
           </View>
           <View style={styles.singleDetail}>
             <Icon name="envelope" size={20} />
-            <TextInput keyboardType="email-address" placeholder="russell.partner@gmail.com" />
+            <TextInput
+              keyboardType="email-address"
+              placeholder="russell.partner@gmail.com"
+            />
           </View>
           <View style={styles.singleDetail}>
             <Icon name="phone" size={20} />
             <TextInput placeholder="+1  202  555  0142 " />
           </View>
+          <View style={styles.singleDetail}>
+            <Icon name="phone" size={20} />
+            <TextInput placeholder="15/25/1666" />
+          </View>
+          <View style={styles.singleDetail}>
+            <Icon name="phone" size={20} />
+            <TextInput placeholder="Nationality" />
+          </View>
+          <View style={styles.singleDetail}>
+            <Icon name="phone" size={20} />
+            <TextInput placeholder="Country" />
+          </View>
+          <View style={styles.singleDetail}>
+            <Icon name="phone" size={20} />
+            <TextInput placeholder="State" />
+          </View>
         </View>
       </View>
-      <View>
-        <Text style={styles.title}>Change Password</Text>
-        <View style={styles.details}>
-          <View style={styles.singleDetail}>
-            <Icon name="lock" size={20} />
-            <TextInput placeholder="Current password" secureTextEntry={true} />
-          </View>
-          <View style={styles.singleDetail}>
-            <Icon name="lock" size={20} />
-            <TextInput placeholder="New password" secureTextEntry={true} />
-          </View>
-          <View style={styles.singleDetail}>
-            <Icon name="lock" size={20} />
-            <TextInput placeholder="Confirm password" secureTextEntry={true} />
-          </View>
-        </View>
-      </View>
-
-      <Button text="Save Settings" />
     </View>
   );
 }

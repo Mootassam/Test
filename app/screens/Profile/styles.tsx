@@ -25,10 +25,11 @@ export default StyleSheet.create({
   content: {
     height: '100%',
     width: '100%',
-    paddingTop: 58,
+    paddingTop: 20,
   },
   linearGradient: {
     height: '100%',
+    backgroundColor: '#1EA073',
   },
   amoutncontent: {
     display: 'flex',
@@ -40,9 +41,8 @@ export default StyleSheet.create({
   },
 
   availablebalance: {
-    color: '#B8B4BE',
-    fontSize: 14.3,
-    fontWeight: '400',
+    color: '#000704',
+    fontSize: 20,
   },
   amount: {
     fontSize: 40,
@@ -70,14 +70,14 @@ export default StyleSheet.create({
   },
   allactions: {
     height: '100%',
-    width: '100%',
     backgroundColor: '#fff',
     position: 'relative',
-    bottom: 27,
     borderRadius: 24,
-    paddingTop: 61,
-    paddingLeft: 26,
+    paddingTop: 25,
+    paddingLeft: 20,
+    paddingRight: 20,
     display: 'flex',
+
     flexDirection: 'column',
   },
 
@@ -88,20 +88,17 @@ export default StyleSheet.create({
   },
   cadre: {
     display: 'flex',
-    alignContent: 'center',
-    alignItems: 'center',
     paddingTop: 16,
-    paddingLeft: 6,
-    maxWidth: 70,
   },
   icon: {
-    width: 54,
-    height: 54,
+    padding: 13,
     backgroundColor: '#F7F5FA',
     borderRadius: 16,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'column',
+    gap: 5,
   },
   text: {
     fontSize: 12,
