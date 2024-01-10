@@ -24,7 +24,7 @@ function UpdateProfile() {
           </View>
           <View style={styles.singleDetail}>
             <Icon name="phone" size={20} />
-            <TextInput placeholder="+1  202  555  0142 " />
+            <TextInput placeholder="+1 2025550142" />
           </View>
           <View style={styles.singleDetail}>
             <Icon name="birthday-cake" size={20} />

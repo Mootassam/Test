@@ -1,13 +1,11 @@
 // App.tsx
 import React from 'react';
-import {SafeAreaView, useColorScheme} from 'react-native';
-import Home from './screens/Home';
 import {NavigationContainer} from '@react-navigation/native';
-import AuthNavigator from './navigations/authNavigator';
+import AppNavigators from './navigations/appNavigators';
 function App() {
   return (
     <NavigationContainer>
-      <AuthNavigator />
+      <AppNavigators />
     </NavigationContainer>
   );
 }
