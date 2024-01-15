@@ -3,10 +3,16 @@ import {View, Text, Image} from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
 import {Images} from '../../../config/images';
+import {useSelector} from 'react-redux';
+import authSelectors from '../../modules/auth/authSelectors';
+import Dates from '../../shared/Dates';
 
 function Home(props: any) {
   const {navigation} = props;
-
+  const currentUser = useSelector(authSelectors.selectCurrentUser);
+  console.log('====================================');
+  console.log(currentUser);
+  console.log('====================================');
   return (
     <View>
       <View style={styles.ViewTop}>
@@ -41,7 +47,7 @@ function Home(props: any) {
           </View>
           <View style={{paddingLeft: 20}}>
             <Text style={{color: '#000704', fontSize: 20}}>
-              Goafucheng Is the best
+              {currentUser.fullName}
             </Text>
             <Text style={{color: '#369676', fontSize: 16}}>
               <Icon name="check-circle" color={'#1EA073'} size={15} /> Verified
@@ -63,14 +69,18 @@ function Home(props: any) {
               <Icon name="calendar-week" color={'green'} size={29} />
               <View>
                 <Text>Date Applied:</Text>
-                <Text style={{fontSize: 12, color: 'black'}}>24/03/2023</Text>
+                <Text style={{fontSize: 12, color: 'black'}}>
+                  {Dates.Date(currentUser.createdAt)}
+                </Text>
               </View>
             </View>
             <View style={{display: 'flex', flexDirection: 'row', gap: 9}}>
               <Icon name="passport" color={'green'} size={29} />
               <View>
                 <Text>Passport Number:</Text>
-                <Text style={{fontSize: 12, color: 'black'}}>1423465987</Text>
+                <Text style={{fontSize: 12, color: 'black'}}>
+                  {currentUser.passportNumber}
+                </Text>
               </View>
             </View>
           </View>
@@ -91,12 +101,12 @@ function Home(props: any) {
                 of days/months]
               </Text>
               <Text>
-                <Text style={{fontWeight: '600'}}>Visa Start: </Text>[Start
-                Date]
+                <Text style={{fontWeight: '600'}}>Visa Start: </Text>
+                {Dates.Date(currentUser.visastart)}
               </Text>
               <Text>
-                <Text style={{fontWeight: '600'}}>Visa Expiry:</Text> [Expiry
-                Date]
+                <Text style={{fontWeight: '600'}}>Visa Expiry:</Text>
+                {Dates.Date(currentUser.visaend)}
               </Text>
             </View>
           </View>

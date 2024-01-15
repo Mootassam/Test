@@ -28,7 +28,7 @@ function Profile(props) {
   // @ts-ignore
   const ActionItem = ({text, route, icon}) => (
     <TouchableOpacity
-      onPress={() => logout()}
+      onPress={() => renderAction(route)}
       activeOpacity={0.7}
       style={{width: '100%'}}>
       <View style={styles.cadre}>
@@ -57,9 +57,22 @@ function Profile(props) {
     },
   ];
 
+  const renderAction = item => {
+    if (item === 'Redirect') {
+      logout();
+    }
+    if (item === 'Updateprofile') {
+      navigation.navigate('Updateprofile');
+    }
+    if (item === 'ChangePassword') {
+      navigation.navigate('ChangePassword');
+    }
+  };
+
   const logout = () => {
     dispatch(authActions.doSignout());
   };
+
   // @ts-ignore
   const renderQuickActionItem = ({item}) => (
     <QuickActionItem text={item.text} route={item.route} icon={item.icon} />

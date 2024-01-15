@@ -14,6 +14,7 @@ function Textinput(props: any) {
     onSubmitEditing,
     touched,
     errors,
+    errorMessage,
   } = props;
   return (
     <>
@@ -28,6 +29,9 @@ function Textinput(props: any) {
         multiline={multiline}
         onSubmitEditing={onSubmitEditing}
       />
+      {errorMessage && (
+        <Text style={{fontSize: 15, color: 'red'}}>{errorMessage}</Text>
+      )}
       {touched && errors && (
         <Text style={{fontSize: 15, color: 'red'}}>{errors}</Text>
       )}

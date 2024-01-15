@@ -14,6 +14,8 @@ import authSelectors from '../../modules/auth/authSelectors';
 function Login(props: {navigation: any}) {
   const dispatch = useDispatch();
   const loading = useSelector(authSelectors.selectLoading);
+  const errorMessage = useSelector(authSelectors.errorMessage);
+
   const schema = yup.object().shape({
     username: yupFormSchemas.string('email', {required: true}),
     password: yupFormSchemas.string('password', {required: true}),
@@ -38,7 +40,9 @@ function Login(props: {navigation: any}) {
     );
   };
 
-  useEffect(() => {}, [loading]);
+  useEffect(() => {
+    authActions.doClearErrorMessage();
+  }, []);
 
   return (
     <Formik
@@ -72,6 +76,7 @@ function Login(props: {navigation: any}) {
                 placeholder="Enter your email"
                 style={styles.input}
                 value={values.username}
+                errorMessage={errorMessage}
               />
               <Textinput
                 secureTextEntry={true}

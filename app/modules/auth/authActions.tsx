@@ -39,7 +39,6 @@ const authActions = {
         await AuthService.signout();
         dispatch(setErrorMessage(Errors.selectMessage(error)));
         dispatch(setLoading(false));
-        Message.error(Errors.selectMessage(error));
       }
     },
 
@@ -129,6 +128,11 @@ const authActions = {
       setLoadingChangingPassowrd(false);
       Message.error(Errors.selectMessage(error));
     }
+  },
+
+  doClearErrorMessage: () => async dispatch => {
+    Message.success('Im the best in the world');
+    await dispatch(setErrorMessage(null));
   },
 };
 export default authActions;
