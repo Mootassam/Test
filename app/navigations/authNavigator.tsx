@@ -9,9 +9,11 @@ import ChangePassword from '../screens/ChangePassword';
 import SuccessPassword from '../screens/SuccessPassword';
 import {Animated, View} from 'react-native';
 
-function AuthNavigator() {
+function AuthNavigator({currentUser}) {
   const Stack = createStackNavigator();
   const tabOffsetValue = useRef(new Animated.Value(0)).current;
+
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -35,7 +37,6 @@ function AuthNavigator() {
         options={{headerTitleAlign: 'center', title: 'Forget Password'}}
       />
       <Stack.Screen name="Otp" component={OTP} options={{headerShown: false}} />
-  
 
       <Stack.Screen
         name="SuccessPassword"

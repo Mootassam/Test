@@ -1,4 +1,6 @@
 import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
-  tasksDone: {},
+  largeText: {
+    fontSize: 45,
+  },
 });

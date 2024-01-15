@@ -5,9 +5,12 @@ import styles from './styles';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
 import {Images} from '../../../config/images';
+import {useDispatch} from 'react-redux';
+import authActions from '../../modules/auth/authActions';
 
 // @ts-ignore
 function Profile(props) {
+  const dispatch = useDispatch();
   const {navigation} = props;
   // @ts-ignore
   const QuickActionItem = ({text, route, icon}) => (
@@ -25,7 +28,7 @@ function Profile(props) {
   // @ts-ignore
   const ActionItem = ({text, route, icon}) => (
     <TouchableOpacity
-      onPress={() => navigation.navigate(route)}
+      onPress={() => logout()}
       activeOpacity={0.7}
       style={{width: '100%'}}>
       <View style={styles.cadre}>
@@ -47,8 +50,16 @@ function Profile(props) {
   const paymentList = [
     {text: 'Personal Information', route: 'Updateprofile', icon: 'user'},
     {text: 'Change Password', route: 'ChangePassword', icon: 'lock'},
-    {text: 'Logout', route: 'Redirect', icon: 'sign-out-alt'},
+    {
+      text: 'Logout',
+      route: 'Redirect',
+      icon: 'sign-out-alt',
+    },
   ];
+
+  const logout = () => {
+    dispatch(authActions.doSignout());
+  };
   // @ts-ignore
   const renderQuickActionItem = ({item}) => (
     <QuickActionItem text={item.text} route={item.route} icon={item.icon} />
