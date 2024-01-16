@@ -10,10 +10,12 @@ import Textinput from '../../components/TextInput';
 
 function ChangePassword() {
   const schema = yup.object().shape({
-    currentPassword: yupFormSchemas.string('currentPassword', {required: true}),
-    newPassword: yupFormSchemas.string('newPassword', {required: true}),
+    currentPassword: yupFormSchemas.string('Current Password', {
+      required: true,
+    }),
+    newPassword: yupFormSchemas.string('New Password', {required: true}),
     confirmPassword: yupFormSchemas
-      .string('confirmPassword', {required: true})
+      .string('Confirm Password', {required: true})
       .oneOf([yup.ref('newPassword'), null], 'Passwords must match'),
   });
   const [initialValues] = useState(() => {

@@ -12,7 +12,7 @@ function AppNavigators() {
   const [value, setValue] = useState(false);
   const currentUser = useSelector(selector.selectCurrentUser);
   const renderItem = () => {
-    if (currentUser === null) {
+    if (currentUser === null || currentUser !== undefined) {
       return <AuthNavigator currentUser={currentUser} />;
     } else {
       return <PrivateNavigator />;

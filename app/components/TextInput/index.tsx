@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextInput, Text} from 'react-native';
+import {TextInput, Text, View} from 'react-native';
 import styles from './styles';
 import PropTypes from 'prop-types';
 
@@ -17,7 +17,7 @@ function Textinput(props: any) {
     errorMessage,
   } = props;
   return (
-    <>
+    <View style={{display: 'flex', flexDirection: 'column'}}>
       <TextInput
         placeholder={placeholder}
         style={styles.input}
@@ -33,9 +33,11 @@ function Textinput(props: any) {
         <Text style={{fontSize: 15, color: 'red'}}>{errorMessage}</Text>
       )}
       {touched && errors && (
-        <Text style={{fontSize: 15, color: 'red'}}>{errors}</Text>
+        <Text style={{fontSize: 13, color: 'red', paddingLeft: 10}}>
+          {errors}
+        </Text>
       )}
-    </>
+    </View>
   );
 }
 
