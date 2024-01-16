@@ -7,8 +7,11 @@ import * as yup from 'yup';
 import yupFormSchemas from '../../modules/shared/yup/yupFormSchemas';
 import {Formik} from 'formik';
 import Textinput from '../../components/TextInput';
+import {useDispatch} from 'react-redux';
+import authActions from '../../modules/auth/authActions';
 
 function ChangePassword() {
+  const dispatch = useDispatch();
   const schema = yup.object().shape({
     currentPassword: yupFormSchemas.string('Current Password', {
       required: true,
@@ -18,6 +21,12 @@ function ChangePassword() {
       .string('Confirm Password', {required: true})
       .oneOf([yup.ref('newPassword'), null], 'Passwords must match'),
   });
+
+  const onSubmit = values => {
+    dispatch(
+      authActions.doChangePassword(values.currentPassword, values.newPassword),
+    );
+  };
   const [initialValues] = useState(() => {
     return {
       currentPassword: '',
