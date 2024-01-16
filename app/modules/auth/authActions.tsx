@@ -42,27 +42,32 @@ const authActions = {
       }
     },
 
-  doRegisterEmailAndPassword: (email: any, password: any) => async dispatch => {
-    try {
-      let currentUser = null;
-      dispatch(setLoading(true));
-      const token = await AuthService.registerWithEmailAndPassword(
-        email,
-        password,
-      );
-      AuthToken.set(token, true);
-      currentUser = await AuthService.fetchMe();
-      dispatch(setLoading(false));
-    } catch (error) {
-      await AuthService.signout();
-      if (Errors.errorCode(error) !== 400) {
-        Errors.handle(error);
+  doRegisterEmailAndPassword:
+    (email: any, phoneNumber: any, country: any, password: any) =>
+    async dispatch => {
+      try {
+        let currentUser = null;
+        dispatch(setLoading(true));
+        const token = await AuthService.registerWithEmailAndPassword(
+          email,
+          phoneNumber,
+          country,
+          password,
+        );
+        AuthToken.set(token, true);
+        currentUser = await AuthService.fetchMe();
+        dispatch(setCurrentUser(currentUser));
+        dispatch(setLoading(false));
+      } catch (error) {
+        await AuthService.signout();
+        if (Errors.errorCode(error) !== 400) {
+          Errors.handle(error);
+        }
+        dispatch(setErrorMessage(Errors.selectMessage(error)));
+        dispatch(setLoading(false));
+        Message.error(Errors.selectMessage(error));
       }
-      dispatch(setErrorMessage(Errors.selectMessage(error)));
-      dispatch(setLoading(false));
-      Message.error(Errors.selectMessage(error));
-    }
-  },
+    },
 
   doSignout: () => async dispatch => {
     try {

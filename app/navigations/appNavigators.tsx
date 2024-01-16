@@ -11,17 +11,15 @@ import {useSelector} from 'react-redux';
 function AppNavigators() {
   const [value, setValue] = useState(false);
   const currentUser = useSelector(selector.selectCurrentUser);
+  useEffect(() => {}, [value]);
+
   const renderItem = () => {
-    if (currentUser === null || currentUser !== undefined) {
+    if (currentUser === null) {
       return <AuthNavigator currentUser={currentUser} />;
     } else {
-      return <PrivateNavigator />;
+      return <PrivateNavigator currentUser={currentUser} />;
     }
   };
-  useEffect(() => {
-    renderItem();
-  }, [value]);
-  console.log(value);
 
   return <>{renderItem()}</>;
 }

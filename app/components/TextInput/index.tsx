@@ -29,12 +29,15 @@ function Textinput(props: any) {
         multiline={multiline}
         onSubmitEditing={onSubmitEditing}
       />
-      {errorMessage && (
-        <Text style={{fontSize: 15, color: 'red'}}>{errorMessage}</Text>
-      )}
+
       {touched && errors && (
         <Text style={{fontSize: 13, color: 'red', paddingLeft: 10}}>
           {errors}
+        </Text>
+      )}
+      {errorMessage && (
+        <Text style={{fontSize: 15, color: 'red', paddingLeft: 10}}>
+          {errorMessage}
         </Text>
       )}
     </View>

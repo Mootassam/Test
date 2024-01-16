@@ -1,18 +1,18 @@
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
+import {useSelector} from 'react-redux';
 import BottomTabNavigator from './BottomTabNavigator';
 import UpdateProfile from '../screens/UpdateProfile';
 import ChangePassword from '../screens/ChangePassword';
-import {useSelector} from 'react-redux';
 import selector from '../modules/auth/authSelectors';
 import PermissionChecker from '../modules/auth/permissionChecker';
 import EmptyPermissionsPage from '../screens/EmptyPermissionsPage';
 
-function PrivateNavigator() {
+function PrivateNavigator({currentUser}) {
   const Stack = createStackNavigator();
   const currentTenant = useSelector(selector.currentTenant);
-  const currentUser = useSelector(selector.selectCurrentUser);
   const permissionChecker = new PermissionChecker(currentUser, currentTenant);
+
   if (permissionChecker.isEmptyPermissions) {
     return (
       <Stack.Navigator
@@ -28,6 +28,7 @@ function PrivateNavigator() {
       </Stack.Navigator>
     );
   }
+
   return (
     <Stack.Navigator
       screenOptions={{

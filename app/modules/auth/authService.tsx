@@ -2,10 +2,17 @@ import authAxios from '../shared/axios/authAxios';
 import AuthToken from './authToken';
 
 export default class AuthService {
-  static async registerWithEmailAndPassword(email: any, password: any) {
+  static async registerWithEmailAndPassword(
+    email: any,
+    phoneNumber: any,
+    country: any,
+    password: any,
+  ) {
     const response = await authAxios.post('/auth/sign-up', {
       email,
       password,
+      phoneNumber,
+      country,
     });
     return response.data;
   }

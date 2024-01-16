@@ -56,8 +56,6 @@ export default class PermissionChecker {
   }
 
   get isAuthenticated() {
-    console.log('CurrentUser', this.currentUser);
-
     return Boolean(this.currentUser) && Boolean(this.currentUser.id);
   }
 }

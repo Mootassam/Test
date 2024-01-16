@@ -7,25 +7,26 @@ import {Formik} from 'formik';
 import yupFormSchemas from '../../modules/shared/yup/yupFormSchemas';
 import Textinput from '../../components/TextInput';
 import Button from '../../components/Button';
+import {useDispatch, useSelector} from 'react-redux';
+import authActions from '../../modules/auth/authActions';
+import authSelectors from '../../modules/auth/authSelectors';
 function Register(props: {navigation: any}) {
   const {navigation} = props;
+  const dispatch = useDispatch();
+  const loading = useSelector(authSelectors.selectLoading);
 
   const schema = yup.object().shape({
-    username: yupFormSchemas.string('Username', {
-      required: true,
-    }),
     email: yupFormSchemas.string('Email', {required: true}),
     phoneNumber: yupFormSchemas.string('Phone Number', {required: true}),
     country: yupFormSchemas.string('Country', {required: true}),
     password: yupFormSchemas.string('Password', {required: true}),
     confirmPassword: yupFormSchemas
       .string('Confirm Password', {required: true})
-      .oneOf([yup.ref('Password'), null], 'Passwords must match'),
+      .oneOf([yup.ref('password'), null], 'Passwords must match'),
   });
 
   const [initialValues] = useState(() => {
     return {
-      username: '',
       email: '',
       phoneNumber: '',
       country: '',
@@ -35,15 +36,20 @@ function Register(props: {navigation: any}) {
     };
   });
   const onSubmit = (values: {
-    username: string;
     email: string;
     phoneNumber: string;
     country: string;
-    rememberMe: boolean;
     password: string;
     confirmPassword: string;
   }) => {
-    Alert.alert('React native');
+    dispatch(
+      authActions.doRegisterEmailAndPassword(
+        values.email,
+        values.phoneNumber,
+        values.country,
+        values.password,
+      ),
+    );
   };
 
   return (
@@ -72,16 +78,6 @@ function Register(props: {navigation: any}) {
             <View>
               <View style={styles.ViewInput}>
                 <Textinput
-                  touched={touched.username}
-                  errors={errors.username}
-                  value={values.username}
-                  onChangeText={handleChange('username')}
-                  onBlur={() => setFieldTouched('username')}
-                  placeholder="Enter your username"
-                  style={styles.input}
-                />
-                <Textinput
-                  secureTextEntry={true}
                   touched={touched.email}
                   errors={errors.email}
                   value={values.email}
@@ -91,17 +87,15 @@ function Register(props: {navigation: any}) {
                   style={styles.input}
                 />
                 <Textinput
-                  secureTextEntry={true}
                   touched={touched.phoneNumber}
                   errors={errors.phoneNumber}
                   value={values.phoneNumber}
-                  onChangeText={handleChange('phone Number')}
-                  onBlur={() => setFieldTouched('phone Number')}
-                  placeholder="Enter your phone Number"
+                  onChangeText={handleChange('phoneNumber')}
+                  onBlur={() => setFieldTouched('phoneNumber')}
+                  placeholder="Enter your phoneNumber"
                   style={styles.input}
                 />
                 <Textinput
-                  secureTextEntry={true}
                   touched={touched.country}
                   errors={errors.country}
                   value={values.country}
@@ -136,6 +130,7 @@ function Register(props: {navigation: any}) {
                 activeOpacity={0.7}
                 text="Register"
                 onPress={handleSubmit}
+                loading={loading}
               />
             </View>
             <View style={styles.noAccount}>
