@@ -27,6 +27,7 @@ const authReducers = createSlice({
     setAuthSuccess: (state, action) => {
       return {
         ...state,
+
         currentUser: action.payload || null,
         currentTenant: AuthCurrentTenant.selectAndSaveOnStorageFor(
           action.payload,

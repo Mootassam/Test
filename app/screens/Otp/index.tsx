@@ -35,4 +35,4 @@ function OTP(props: {navigation: any}) {
   );
 }
 
-export default OTP;
+export default React.memo(OTP);

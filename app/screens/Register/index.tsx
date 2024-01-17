@@ -148,4 +148,4 @@ function Register(props: {navigation: any}) {
   );
 }
 
-export default Register;
+export default React.memo(Register);

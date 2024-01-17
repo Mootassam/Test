@@ -33,4 +33,4 @@ function ForgetPassword(props: {navigation: any}) {
   );
 }
 
-export default ForgetPassword;
+export default React.memo(ForgetPassword);

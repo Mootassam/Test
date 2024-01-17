@@ -1,3 +1,4 @@
+import React from 'react';
 import {View, Text, Image} from 'react-native';
 import {Images} from '../../../config/images';
 import styles from './styles';
@@ -24,4 +25,4 @@ function SuccessPassword(props: any) {
   );
 }
 
-export default SuccessPassword;
+export default React.memo(SuccessPassword);

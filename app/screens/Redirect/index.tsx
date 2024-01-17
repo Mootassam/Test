@@ -24,15 +24,11 @@ function Redirect(props: {navigation: any}) {
             onPress={() => navigation.navigate('Register')}>
             <Text style={styles.textregister}>Register</Text>
           </TouchableOpacity>
-          <Text
-            style={styles.contiueGuest}
-            onPress={() => navigation.navigate('Home')}>
-            Continue as a guest
-          </Text>
+          <Text style={styles.contiueGuest}></Text>
         </View>
       </View>
     </ImageBackground>
   );
 }
 
-export default Redirect;
+export default React.memo(Redirect);

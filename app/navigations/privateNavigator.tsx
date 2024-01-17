@@ -1,19 +1,21 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {useSelector} from 'react-redux';
 import BottomTabNavigator from './BottomTabNavigator';
-import UpdateProfile from '../screens/UpdateProfile';
-import ChangePassword from '../screens/ChangePassword';
 import selector from '../modules/auth/authSelectors';
 import PermissionChecker from '../modules/auth/permissionChecker';
 import EmptyPermissionsPage from '../screens/EmptyPermissionsPage';
-import Login from '../screens/Login';
+const UpdateProfile = React.lazy(() => import('../screens/UpdateProfile'));
+const ChangePassword = React.lazy(() => import('../screens/ChangePassword'));
+const Login = React.lazy(() => import('../screens/Login'));
 
 function PrivateNavigator({currentUser}) {
   const Stack = createStackNavigator();
   const currentTenant = useSelector(selector.currentTenant);
-  const permissionChecker = new PermissionChecker(currentUser, currentTenant);
-
+  const permissionChecker = useMemo(
+    () => new PermissionChecker(currentUser, currentTenant),
+    [currentUser, currentTenant],
+  );
   if (permissionChecker.isEmptyPermissions) {
     return (
       <Stack.Navigator
@@ -76,4 +78,4 @@ function PrivateNavigator({currentUser}) {
   );
 }
 
-export default PrivateNavigator;
+export default React.memo(PrivateNavigator);

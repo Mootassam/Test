@@ -37,4 +37,4 @@ function EmptyPermissionsPage() {
   );
 }
 
-export default EmptyPermissionsPage;
+export default React.memo(EmptyPermissionsPage);

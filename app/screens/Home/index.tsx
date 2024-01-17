@@ -6,13 +6,14 @@ import {Images} from '../../../config/images';
 import {useSelector} from 'react-redux';
 import authSelectors from '../../modules/auth/authSelectors';
 import Dates from '../../shared/Dates';
+import {SafeAreaView} from 'react-native';
 
 function Home(props: any) {
   const {navigation} = props;
   const currentUser = useSelector(authSelectors.selectCurrentUser);
 
   return (
-    <View>
+    <SafeAreaView style={{flex: 1}}>
       <View style={styles.ViewTop}>
         <View style={styles.ViewMeduim}>
           <View
@@ -91,12 +92,10 @@ function Home(props: any) {
             <Text style={{fontSize: 16, color: 'black'}}>Visa Details:</Text>
             <View style={{paddingTop: 16, display: 'flex', gap: 3}}>
               <Text>
-                <Text style={{fontWeight: '600'}}>Visa Type: </Text> [Type of
-                Visa]
+                <Text style={{fontWeight: '600'}}>Visa Type: </Text> {currentUser.coupon.title}
               </Text>
               <Text>
-                <Text style={{fontWeight: '600'}}>Stay Duration: </Text>[Number
-                of days/months]
+                <Text style={{fontWeight: '600'}}>Stay Duration: </Text> {currentUser.coupon.noOfTimes}
               </Text>
               <Text>
                 <Text style={{fontWeight: '600'}}>Visa Start: </Text>
@@ -116,11 +115,11 @@ function Home(props: any) {
             <View style={{paddingTop: 16, display: 'flex', gap: 3}}>
               <Text>
                 <Text style={{fontWeight: '600'}}>Total Visa Fee:</Text>{' '}
-                [Amount]
+                {currentUser.coupon.discount}
               </Text>
               <Text>
                 <Text style={{fontWeight: '600'}}>Payment Status:</Text>{' '}
-                [Paid/Unpaid]
+                {currentUser.payee}
               </Text>
               <Text>
                 <Text style={{fontWeight: '600'}}>Payment Method: </Text>[Credit
@@ -130,8 +129,8 @@ function Home(props: any) {
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
-export default Home;
+export default React.memo(Home);

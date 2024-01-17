@@ -1,17 +1,13 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from '../screens/Login';
-import Register from '../screens/Register';
+const Login = React.lazy(() => import('../screens/Login'));
+const Register = React.lazy(() => import('../screens/Register'));
 import Redirect from '../screens/Redirect';
-import ForgetPassword from '../screens/ForgetPassword/Index';
-import OTP from '../screens/Otp';
-import ChangePassword from '../screens/ChangePassword';
-import SuccessPassword from '../screens/SuccessPassword';
-import {Animated, View} from 'react-native';
-
+const ForgetPassword = React.lazy(() => import('../screens/ForgetPassword'));
+const OTP = React.lazy(() => import('../screens/Otp'));
+const SuccessPassword = React.lazy(() => import('../screens/SuccessPassword'));
 function AuthNavigator() {
   const Stack = createStackNavigator();
-
   return (
     <Stack.Navigator
       screenOptions={{
@@ -45,4 +41,4 @@ function AuthNavigator() {
   );
 }
 
-export default AuthNavigator;
+export default React.memo(AuthNavigator);

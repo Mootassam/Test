@@ -110,4 +110,5 @@ function Login(props: {navigation: any}) {
   );
 }
 
-export default Login;
+
+export default React.memo(Login);

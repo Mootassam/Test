@@ -4,7 +4,7 @@ export default StyleSheet.create({
   ViewTop: {
     backgroundColor: '#1EA073',
     width: '100%',
-    height: '44%',
+    height: 260,
     position: 'relative',
     display: 'flex',
     alignContent: 'center',

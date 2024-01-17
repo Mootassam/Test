@@ -101,13 +101,13 @@ const authActions = {
   },
   doChangePassword: (oldPassword: any, newPassword: any) => async dispatch => {
     try {
-      dispatch(setStartChangePassword(''));
+      dispatch(setStartChangePassword(true));
       await AuthService.changePassword(oldPassword, newPassword);
+      dispatch(setSuccessChangePasswrod(false));
       Message.success('Password was successfully changed');
       await dispatch(authActions.doRefreshCurrentUser());
-      dispatch(setSuccessChangePasswrod(''));
     } catch (error) {
-      dispatch(setErrorChangePassword(''));
+      dispatch(setErrorChangePassword(false));
       Message.error(Errors.selectMessage(error));
     }
   },
