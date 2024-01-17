@@ -2,52 +2,48 @@ import Message from '../../shared/Message';
 import Errors from '../shared/error/error';
 import AuthCurrentTenant from './authCurrentTenant';
 import {
-  setCurrentTenant,
-  setCurrentUser,
-  setErrorMessage,
-  setLoading,
-  setLoadingChangingPassowrd,
-  setLoadingInit,
+  setAuthError,
+  setAuthStart,
+  setAuthSuccess,
+  setErrorChangePassword,
+  setErrorMessageCleared,
+  setErrorRefreshCurrentUser,
+  setInitError,
+  setInitSuccess,
+  setRefreshCurrentUser,
+  setStartChangePassword,
+  setSuccessChangePasswrod,
 } from './authReducers';
 import AuthService from './authService';
 import AuthToken from './authToken';
 import {Dispatch} from 'redux';
-
 const authActions = {
   doSigninWithEmailAndPassword:
     (email: any, password: any) => async (dispatch: Dispatch<any>) => {
       try {
         let currentUser = null;
-        dispatch(setLoading(true));
+        dispatch(setAuthStart(true));
         const token = await AuthService.signinWithEmailAndPassword(
           email,
           password,
         );
         await AuthToken.set(token, true);
         currentUser = await AuthService.fetchMe();
-        dispatch(setCurrentUser(currentUser));
-        dispatch(
-          setCurrentTenant(
-            AuthCurrentTenant.selectAndSaveOnStorageFor(currentUser),
-          ),
-        );
-        dispatch(setLoading(false));
+        dispatch(setAuthSuccess(currentUser));
       } catch (error) {
         if (Errors.errorCode(error) !== 400) {
           Errors.handle(error);
         }
         await AuthService.signout();
-        dispatch(setErrorMessage(Errors.selectMessage(error)));
-        dispatch(setLoading(false));
+        dispatch(setAuthError(Errors.selectMessage(error)));
       }
     },
-
   doRegisterEmailAndPassword:
     (email: any, phoneNumber: any, country: any, password: any) =>
     async dispatch => {
       try {
         let currentUser = null;
-        dispatch(setLoading(true));
+        dispatch(setAuthStart(true));
         const token = await AuthService.registerWithEmailAndPassword(
           email,
           phoneNumber,
@@ -56,47 +52,37 @@ const authActions = {
         );
         AuthToken.set(token, true);
         currentUser = await AuthService.fetchMe();
-        dispatch(setCurrentUser(currentUser));
-        dispatch(setLoading(false));
+        dispatch(setAuthSuccess(currentUser));
       } catch (error) {
         await AuthService.signout();
         if (Errors.errorCode(error) !== 400) {
           Errors.handle(error);
         }
-        dispatch(setErrorMessage(Errors.selectMessage(error)));
-        dispatch(setLoading(false));
-        Message.error(Errors.selectMessage(error));
+        dispatch(setAuthError(Errors.selectMessage(error)));
       }
     },
-
   doSignout: () => async dispatch => {
     try {
+      dispatch(setAuthStart(true));
       await AuthService.signout();
-      dispatch(setCurrentUser(null));
+      dispatch(setAuthSuccess(null));
     } catch (error) {
       Errors.handle(error);
+      dispatch(setAuthError(null));
     }
   },
-
   doInit: () => async dispatch => {
     try {
-      const token = AuthToken.get();
+      const token = await AuthToken.get();
       let currentUser = null;
       if (token !== null) {
         currentUser = await AuthService.fetchMe();
       }
-      dispatch(setCurrentUser(currentUser));
-      dispatch(
-        setCurrentTenant(
-          AuthCurrentTenant.selectAndSaveOnStorageFor(currentUser),
-        ),
-      );
+      dispatch(setInitSuccess(currentUser));
     } catch (error) {
       AuthService.signout();
       Errors.handle(error);
-      dispatch(setCurrentUser(null));
-      dispatch(setCurrentTenant(null));
-      dispatch(setLoadingInit(false));
+      dispatch(setInitError(null));
     }
   },
   doRefreshCurrentUser: () => async dispatch => {
@@ -106,38 +92,28 @@ const authActions = {
       if (token) {
         currentUser = await AuthService.fetchMe();
       }
-      dispatch(setCurrentUser(currentUser || null));
-      dispatch(
-        setCurrentTenant(
-          AuthCurrentTenant.selectAndSaveOnStorageFor(currentUser),
-        ),
-      );
+      await dispatch(setRefreshCurrentUser(currentUser));
     } catch (error) {
       AuthService.signout();
       Errors.handle(error);
-      dispatch(setCurrentUser(setCurrentUser(null)));
-      dispatch(
-        setCurrentTenant(AuthCurrentTenant.selectAndSaveOnStorageFor(null)),
-      );
+      await dispatch(setErrorRefreshCurrentUser(null));
     }
   },
-
   doChangePassword: (oldPassword: any, newPassword: any) => async dispatch => {
     try {
-      setLoadingChangingPassowrd(true);
+      dispatch(setStartChangePassword(''));
       await AuthService.changePassword(oldPassword, newPassword);
-      setLoadingChangingPassowrd(false);
-      await dispatch(authActions.doRefreshCurrentUser());
       Message.success('Password was successfully changed');
+      await dispatch(authActions.doRefreshCurrentUser());
+      dispatch(setSuccessChangePasswrod(''));
     } catch (error) {
-      setLoadingChangingPassowrd(false);
+      dispatch(setErrorChangePassword(''));
       Message.error(Errors.selectMessage(error));
     }
   },
 
   doClearErrorMessage: () => async dispatch => {
-    Message.success('Im the best in the world');
-    await dispatch(setErrorMessage(null));
+    await dispatch(setErrorMessageCleared(null));
   },
 };
 export default authActions;

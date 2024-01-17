@@ -10,9 +10,7 @@ import Dates from '../../shared/Dates';
 function Home(props: any) {
   const {navigation} = props;
   const currentUser = useSelector(authSelectors.selectCurrentUser);
-  console.log('====================================');
-  console.log(currentUser);
-  console.log('====================================');
+
   return (
     <View>
       <View style={styles.ViewTop}>
@@ -47,7 +45,7 @@ function Home(props: any) {
           </View>
           <View style={{paddingLeft: 20}}>
             <Text style={{color: '#000704', fontSize: 20}}>
-              {currentUser.fullName}
+              {currentUser?.fullName}
             </Text>
             <Text style={{color: '#369676', fontSize: 16}}>
               <Icon name="check-circle" color={'#1EA073'} size={15} /> Verified
@@ -70,7 +68,7 @@ function Home(props: any) {
               <View>
                 <Text>Date Applied:</Text>
                 <Text style={{fontSize: 12, color: 'black'}}>
-                  {Dates.Date(currentUser.createdAt)}
+                  {Dates.Date(currentUser?.createdAt)}
                 </Text>
               </View>
             </View>
@@ -79,7 +77,7 @@ function Home(props: any) {
               <View>
                 <Text>Passport Number:</Text>
                 <Text style={{fontSize: 12, color: 'black'}}>
-                  {currentUser.passportNumber}
+                  {currentUser?.passportNumber}
                 </Text>
               </View>
             </View>
@@ -102,11 +100,11 @@ function Home(props: any) {
               </Text>
               <Text>
                 <Text style={{fontWeight: '600'}}>Visa Start: </Text>
-                {Dates.Date(currentUser.visastart)}
+                {Dates.Date(currentUser?.visastart)}
               </Text>
               <Text>
                 <Text style={{fontWeight: '600'}}>Visa Expiry:</Text>
-                {Dates.Date(currentUser.visaend)}
+                {Dates.Date(currentUser?.visaend)}
               </Text>
             </View>
           </View>

@@ -7,11 +7,13 @@ import * as yup from 'yup';
 import yupFormSchemas from '../../modules/shared/yup/yupFormSchemas';
 import {Formik} from 'formik';
 import Textinput from '../../components/TextInput';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import authActions from '../../modules/auth/authActions';
+import authSelectors from '../../modules/auth/authSelectors';
 
 function ChangePassword() {
   const dispatch = useDispatch();
+  const loading = useSelector(authSelectors.loadingChangePassword);
   const schema = yup.object().shape({
     currentPassword: yupFormSchemas.string('Current Password', {
       required: true,
@@ -85,7 +87,7 @@ function ChangePassword() {
             </View>
           </View>
 
-          <Button text="Submit" onPress={handleSubmit} />
+          <Button text="Submit" onPress={handleSubmit} loading={loading} />
         </View>
       )}
     </Formik>

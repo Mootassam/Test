@@ -5,12 +5,14 @@ import styles from './styles';
 // @ts-ignore
 import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
 import {Images} from '../../../config/images';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import authActions from '../../modules/auth/authActions';
+import authSelectors from '../../modules/auth/authSelectors';
 
 // @ts-ignore
 function Profile(props) {
   const dispatch = useDispatch();
+  const loading = useSelector(authSelectors.selectLoading);
   const {navigation} = props;
   // @ts-ignore
   const QuickActionItem = ({text, route, icon}) => (
@@ -74,9 +76,7 @@ function Profile(props) {
   };
 
   // @ts-ignore
-  const renderQuickActionItem = ({item}) => (
-    <QuickActionItem text={item.text} route={item.route} icon={item.icon} />
-  );
+
   // @ts-ignore
   const renderActionItem = ({item}) => (
     <ActionItem text={item.text} route={item.route} icon={item.icon} />

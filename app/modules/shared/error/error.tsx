@@ -45,9 +45,8 @@ export default class Errors {
       RNRestart.Restart();
       return;
     }
-
     if (selectErrorCode(error) === 403) {
-      //       getHistory().push("/403");
+      //getHistory().push("/403");
       return;
     }
 

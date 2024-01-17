@@ -7,6 +7,7 @@ import ChangePassword from '../screens/ChangePassword';
 import selector from '../modules/auth/authSelectors';
 import PermissionChecker from '../modules/auth/permissionChecker';
 import EmptyPermissionsPage from '../screens/EmptyPermissionsPage';
+import Login from '../screens/Login';
 
 function PrivateNavigator({currentUser}) {
   const Stack = createStackNavigator();
@@ -27,6 +28,17 @@ function PrivateNavigator({currentUser}) {
         />
       </Stack.Navigator>
     );
+  }
+
+  if (!permissionChecker.isAuthenticated) {
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+        presentation: 'modal',
+      }}
+      initialRouteName="Login">
+      <Stack.Screen name={'EmptyPermissionsPage'} component={Login} />
+    </Stack.Navigator>;
   }
 
   return (

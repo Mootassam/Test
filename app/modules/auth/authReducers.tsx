@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import AuthCurrentTenant from './authCurrentTenant';
 
 const authReducers = createSlice({
   name: 'auth',
@@ -14,31 +15,114 @@ const authReducers = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
-    setCurrentUser: (state, action) => {
-      state.currentUser = action.payload;
+
+    setAuthStart: (state, action) => {
+      return {
+        ...state,
+        loading: action.payload,
+        errorMessage: null,
+      };
     },
-    setErrorMessage(state, action) {
-      state.errorMessage = action.payload;
+
+    setAuthSuccess: (state, action) => {
+      return {
+        ...state,
+        currentUser: action.payload || null,
+        currentTenant: AuthCurrentTenant.selectAndSaveOnStorageFor(
+          action.payload,
+        ),
+        errorMessage: null,
+        loading: false,
+      };
     },
-    setLoadingInit(state, action) {
-      state.loadingInit = action.payload;
+
+    setAuthError: (state, action) => {
+      return {
+        ...state,
+        loading: false,
+        currentTenant: null,
+        currentUser: null,
+        errorMessage: action.payload || null,
+      };
     },
-    setLoadingChangingPassowrd(state, action) {
-      state.loadingChangePassword = action.payload;
+
+    setStartChangePassword: (state, action) => {
+      return {
+        ...state,
+        loadingChangePassword: true,
+      };
     },
-    setCurrentTenant(state, action) {
-      state.currentTenant = action.payload;
+    setSuccessChangePasswrod: (state, action) => {
+      return {
+        ...state,
+        loadingChangePassword: false,
+      };
+    },
+    setErrorChangePassword: (state, action) => {
+      return {
+        ...state,
+        loadingChangePassword: false,
+      };
+    },
+
+    setRefreshCurrentUser: (state, action) => {
+      return {
+        ...state,
+        currentUser: action.payload || null,
+        currentTenant: AuthCurrentTenant.selectAndSaveOnStorageFor(
+          action.payload,
+        ),
+      };
+    },
+
+    setErrorRefreshCurrentUser: (state, action) => {
+      return {
+        ...state,
+        currentUser: null,
+        currentTenant: AuthCurrentTenant.selectAndSaveOnStorageFor(null),
+      };
+    },
+
+    setErrorMessageCleared: (state, action) => {
+      return {
+        ...state,
+        errorMessage: null,
+      };
+    },
+
+    setInitSuccess: (state, action) => {
+      return {
+        ...state,
+        currentUser: action.payload || null,
+        currentTenant: AuthCurrentTenant.selectAndSaveOnStorageFor(
+          action.payload,
+        ),
+        loadingInit: false,
+      };
+    },
+    setInitError: (state, action) => {
+      return {
+        ...state,
+        currentUser: null,
+        currentTenant: null,
+        loadingInit: false,
+      };
     },
   },
 });
 
 export const {
-  setLoading,
-  setCurrentUser,
-  setErrorMessage,
-  setLoadingInit,
-  setLoadingChangingPassowrd,
-  setCurrentTenant,
+  setStartChangePassword,
+  setSuccessChangePasswrod,
+  setErrorChangePassword,
+  setRefreshCurrentUser,
+  setErrorMessageCleared,
+  setErrorRefreshCurrentUser,
+  setInitSuccess,
+  setInitError,
+  setAuthStart,
+  setAuthSuccess,
+  setAuthError,
 } = authReducers.actions;
 
 export default authReducers.reducer;

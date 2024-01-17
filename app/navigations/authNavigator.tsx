@@ -9,10 +9,8 @@ import ChangePassword from '../screens/ChangePassword';
 import SuccessPassword from '../screens/SuccessPassword';
 import {Animated, View} from 'react-native';
 
-function AuthNavigator({currentUser}) {
+function AuthNavigator() {
   const Stack = createStackNavigator();
-  const tabOffsetValue = useRef(new Animated.Value(0)).current;
-
 
   return (
     <Stack.Navigator

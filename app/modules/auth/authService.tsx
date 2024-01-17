@@ -33,7 +33,6 @@ export default class AuthService {
   static signout() {
     AuthToken.set(null, '');
   }
-
   static async updateProfile(data: any) {
     const body = {
       data,
@@ -47,9 +46,7 @@ export default class AuthService {
       oldPassword,
       newPassword,
     };
-
     const response = await authAxios.put('/auth/change-password', body);
-
     return response.data;
   }
 }

@@ -15,7 +15,6 @@ function EmptyPermissionsPage() {
 
   const logout = () => {
     dispatch(authActions.doSignout());
-    persistor.purge();
   };
   return (
     <View style={{margin: 17}}>
