@@ -15,7 +15,6 @@ function Login(props: {navigation: any}) {
   const dispatch = useDispatch();
   const loading = useSelector(authSelectors.selectLoading);
   const errorMessage = useSelector(authSelectors.errorMessage);
-
   const schema = yup.object().shape({
     username: yupFormSchemas.string('email', {required: true}),
     password: yupFormSchemas.string('password', {required: true}),
@@ -41,7 +40,9 @@ function Login(props: {navigation: any}) {
   };
 
   useEffect(() => {
-    authActions.doClearErrorMessage();
+    console.log('im here the best');
+
+    dispatch(authActions.doClearErrorMessage());
   }, []);
 
   return (
@@ -109,6 +110,5 @@ function Login(props: {navigation: any}) {
     </Formik>
   );
 }
-
 
 export default React.memo(Login);

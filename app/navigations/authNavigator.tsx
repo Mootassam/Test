@@ -26,17 +26,21 @@ function AuthNavigator() {
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{headerTitleAlign: 'center', gestureEnabled: false}}
+        options={{headerShown: false, gestureEnabled: false}}
       />
       <Stack.Screen
         name="Register"
         component={Register}
-        options={{headerTitleAlign: 'center'}}
+        options={{headerShown: false}}
       />
       <Stack.Screen
         name="Forgetpassword"
         component={ForgetPassword}
-        options={{headerTitleAlign: 'center', title: 'Forget Password'}}
+        options={{
+          headerShown: true,
+          title: 'Forget Password',
+          headerTitleAlign: 'center',
+        }}
       />
       <Stack.Screen name="Otp" component={OTP} options={{headerShown: false}} />
 

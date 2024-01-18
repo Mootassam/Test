@@ -1,6 +1,5 @@
 import Message from '../../shared/Message';
 import Errors from '../shared/error/error';
-import AuthCurrentTenant from './authCurrentTenant';
 import {
   setAuthError,
   setAuthStart,
