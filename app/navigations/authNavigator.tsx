@@ -23,8 +23,16 @@ function AuthNavigator() {
         component={Redirect}
         options={{headerShown: false}}
       />
-      <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{headerTitleAlign: 'center', gestureEnabled: false}}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{headerTitleAlign: 'center'}}
+      />
       <Stack.Screen
         name="Forgetpassword"
         component={ForgetPassword}

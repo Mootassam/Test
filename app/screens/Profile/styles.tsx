@@ -72,12 +72,12 @@ export default StyleSheet.create({
     height: '100%',
     backgroundColor: '#fff',
     position: 'relative',
-    borderRadius: 24,
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
     paddingTop: 25,
     paddingLeft: 20,
     paddingRight: 20,
     display: 'flex',
-
     flexDirection: 'column',
   },
 

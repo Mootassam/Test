@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
   LoginComponenet: {
-    paddingTop: 81,
+    paddingTop: 43,
     paddingLeft: 22,
     paddingRight: 22,
   },

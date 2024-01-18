@@ -10,6 +10,7 @@ import Button from '../../components/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import authActions from '../../modules/auth/authActions';
 import authSelectors from '../../modules/auth/authSelectors';
+import { SafeAreaView } from 'react-native-safe-area-context';
 function Register(props: {navigation: any}) {
   const {navigation} = props;
   const dispatch = useDispatch();
@@ -53,6 +54,7 @@ function Register(props: {navigation: any}) {
   };
 
   return (
+    <SafeAreaView style={{flex: 1}}>
     <ScrollView style={{marginBottom: 26}}>
       <Formik
         initialValues={initialValues}
@@ -145,6 +147,7 @@ function Register(props: {navigation: any}) {
         )}
       </Formik>
     </ScrollView>
+    </SafeAreaView>
   );
 }
 

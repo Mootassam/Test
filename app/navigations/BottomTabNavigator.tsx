@@ -1,5 +1,5 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../screens/Home';
 import Team from '../screens/Team';
 import Profile from '../screens/Profile';
@@ -10,7 +10,7 @@ function BottomTabNavigator() {
 
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
+      screenOptions={({ route }) => ({
         animationEnabled: true,
         headerShown: false,
         tabBarActiveTintColor: '#a2703d',
@@ -27,9 +27,10 @@ function BottomTabNavigator() {
           backgroundColor: 'white',
           justifyContent: 'space-between',
           width: '100%',
-          paddingHorizontal: 20, // Adjusted padding
+          paddingHorizontal: 20,
+          paddingBottom: 0, // Adjusted paddingBottom
         },
-        tabBarIcon: ({color, size}) => {
+        tabBarIcon: ({ color, size }) => {
           let iconName;
 
           if (route.name === 'Home') {
@@ -42,7 +43,8 @@ function BottomTabNavigator() {
 
           return <Icon name={iconName} size={size} color={color} />;
         },
-      })}>
+      })}
+    >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Team" component={Team} />
       <Tab.Screen name="Profile" component={Profile} />
