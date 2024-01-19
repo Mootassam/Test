@@ -1,5 +1,5 @@
-import React from 'react';
-import {View, Text, Image} from 'react-native';
+import React, {useEffect} from 'react';
+import {View, Text, Image, Alert} from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
 import {Images} from '../../../config/images';
@@ -7,7 +7,9 @@ import {useSelector} from 'react-redux';
 import authSelectors from '../../modules/auth/authSelectors';
 import Dates from '../../shared/Dates';
 import {SafeAreaView} from 'react-native';
-
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import RNFetchBlob from 'rn-fetch-blob';
+import {downloadFile} from '../../shared/Download';
 function Home(props: any) {
   const {navigation} = props;
   const currentUser = useSelector(authSelectors.selectCurrentUser);
@@ -64,7 +66,9 @@ function Home(props: any) {
                 alignItems: 'center',
                 gap: 2,
               }}>
-              <Icon name="download" color={'#a2703d'} size={24} />
+              <TouchableOpacity onPress={() => downloadFile("https://www.africau.edu/images/default/sample.pdf")}>
+                <Icon name="download" color={'#a2703d'} size={24} />
+              </TouchableOpacity>
             </View>
           </View>
           <View style={{paddingLeft: 20}}>
