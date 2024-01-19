@@ -3,10 +3,31 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
   content: {
     margin: 17,
-    marginBottom: 70,
+    marginBottom: 50,
     display: 'flex',
     flexDirection: 'column',
     gap: 25,
+  },
+
+  box: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+  },
+  meduimbox: {
+    paddingTop: 10,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 10,
+  },
+  largebox: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 3,
+    marginBottom: 30,
   },
   boxContent: {
     backgroundColor: '#fff',

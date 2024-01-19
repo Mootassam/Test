@@ -1,26 +1,94 @@
-import React from 'react';
+import {TouchableWithoutFeedback, Linking} from 'react-native';
+import React, {useEffect} from 'react';
 import {View, Text} from 'react-native';
 import styles from './styles';
-import FastImage from 'react-native-fast-image';
 import {Images} from '../../../config/images';
 import {ScrollView} from 'react-native-gesture-handler';
-import {Image} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
-
+import FastImage from 'react-native-fast-image';
+import {useDispatch, useSelector} from 'react-redux';
+import contactActions from '../../modules/contact/contactActions';
+import contactSelectors from '../../modules/contact/contactSelectors';
 function Team() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(contactActions.doFetch());
+  }, [dispatch]);
+  const loading = useSelector(contactSelectors.loading);
+  const record = useSelector(contactSelectors.record);
+
+  const navigateToApp = (appName, number) => {
+    switch (appName) {
+      case 'WhatsApp':
+        // Example: Open WhatsApp with the provided number
+        Linking.openURL(`whatsapp://send?phone=${number}`);
+        break;
+      case 'Telegram':
+        // Example: Open Telegram with the provided number
+        Linking.openURL(`tg://resolve?domain=${number}`);
+        break;
+      case 'Email':
+        // Example: Open default Email app with the provided email address
+        Linking.openURL(`mailto:${number}`);
+        break;
+      case 'SMS':
+        // Example: Open default SMS app with the provided number
+        Linking.openURL(`sms:${number}`);
+        break;
+      default:
+        console.log('Invalid app name');
+    }
+  };
+
+  const rengerImage = item => {
+    let path;
+    if (item.name === 'WhatsApp') {
+      return (path = Images.whatsapp);
+    } else if (item.name === 'Telegram') {
+      return (path = Images.telegram);
+    } else if (item.name === 'Email') {
+      return (path = Images.email);
+    } else if (item.name === 'SMS') {
+      return (path = Images.sms);
+    }
+    return path;
+  };
+
+  const renderItem = () => {
+    return (
+      <View style={styles.sharelinks}>
+        {record.map((item, index) => (
+          <TouchableWithoutFeedback
+            key={index}
+            onPress={() => navigateToApp(item.name, item.number)}>
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 10,
+              }}>
+              <FastImage
+                source={rengerImage(item)}
+                resizeMode={FastImage.resizeMode.contain}
+                style={{width: 50, height: 50}}
+              />
+              <Text style={styles.textwhite}>{item.name}</Text>
+            </View>
+          </TouchableWithoutFeedback>
+        ))}
+      </View>
+    );
+  };
+
   return (
     <ScrollView>
       <View style={styles.content}>
         <View style={styles.boxContent}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '100%',
-            }}>
+          <View style={styles.box}>
             <View style={styles.boxIcon}>
-              <Image
+              <FastImage
                 source={Images.costumer}
                 style={styles.icon}
                 resizeMode="contain"
@@ -30,9 +98,8 @@ function Team() {
                 Happy Customers
               </Text>
             </View>
-
             <View style={styles.boxIcon}>
-              <Image
+              <FastImage
                 source={Images.ontime}
                 style={styles.icon}
                 resizeMode="contain"
@@ -42,9 +109,8 @@ function Team() {
                 On Time Delivery
               </Text>
             </View>
-
             <View style={styles.boxIcon}>
-              <Image
+              <FastImage
                 source={Images.quality}
                 style={styles.icon}
                 resizeMode="contain"
@@ -56,9 +122,8 @@ function Team() {
                 of Experience
               </Text>
             </View>
-
             <View style={styles.boxIcon}>
-              <Image
+              <FastImage
                 source={Images.review}
                 style={styles.icon}
                 resizeMode="contain"
@@ -67,35 +132,21 @@ function Team() {
             </View>
           </View>
         </View>
-
         <View style={styles.boxContent}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '100%',
-            }}>
+          <View style={styles.box}>
             <View>
-              <Image
+              <FastImage
                 source={Images.qf}
                 style={styles.iconqf}
                 resizeMode="contain"
               />
-              <View
-                style={{
-                  paddingTop: 10,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 10,
-                }}>
+              <View style={styles.meduimbox}>
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text ellipsizeMode="tail" style={{maxWidth: 300}}>
                     24 to 72 working hours delivery time guarantee.
                   </Text>
                 </View>
-
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text ellipsizeMode="tail" style={{maxWidth: 300}}>
@@ -103,7 +154,6 @@ function Team() {
                     Skype to assist you.
                   </Text>
                 </View>
-
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text ellipsizeMode="tail" style={{maxWidth: 300}}>
@@ -123,31 +173,18 @@ function Team() {
             </View>
           </View>
         </View>
-
         <View style={styles.boxContent}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '100%',
-            }}>
+          <View style={styles.box}>
             <View>
               <Text style={styles.invitationLink}>
                 THINGS TO BE DONE ONCE YOU REACH
               </Text>
-              <Image
+              <FastImage
                 source={Images.banner}
                 resizeMode="contain"
                 style={{width: '100%', height: 260}}
               />
-              <View
-                style={{
-                  paddingTop: 10,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 10,
-                }}>
+              <View style={styles.meduimbox}>
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text ellipsizeMode="tail" style={{maxWidth: 300}}>
@@ -155,7 +192,6 @@ function Team() {
                     pass through customs including books, videotapes, etc.
                   </Text>
                 </View>
-
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text ellipsizeMode="tail" style={{maxWidth: 300}}>
@@ -163,7 +199,6 @@ function Team() {
                     while roaming.
                   </Text>
                 </View>
-
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text>
@@ -178,36 +213,21 @@ function Team() {
             </View>
           </View>
         </View>
-
         <View style={styles.boxContent}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: '100%',
-            }}>
+          <View style={styles.box}>
             <View>
               <Text style={styles.invitationLink}>
                 What you can do while you plan and travel:
               </Text>
-              <View
-                style={{
-                  paddingTop: 10,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 10,
-                }}>
+              <View style={styles.meduimbox}>
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text>Let your device rest at home while you holiday</Text>
                 </View>
-
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text>Try to choose a destination close to your home</Text>
                 </View>
-
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text>Travel light, Travel right</Text>
@@ -219,12 +239,10 @@ function Team() {
                     its beings
                   </Text>
                 </View>
-
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text>Opt for green transport options</Text>
                 </View>
-
                 <View style={styles.listItem}>
                   <Icon name="check" color="green" />
                   <Text ellipsizeMode="tail" style={{maxWidth: 340}}>
@@ -239,7 +257,6 @@ function Team() {
                     receive hospitality
                   </Text>
                 </View>
-
                 <Text ellipsizeMode="tail" style={{maxWidth: 340}}>
                   The planet belongs to all of us. Each one has the privilege to
                   contribute to a better world. We all can leave a better planet
@@ -250,25 +267,20 @@ function Team() {
           </View>
         </View>
         <View style={styles.boxContent}>
-          <View
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              gap: 3,
-              marginBottom: 10,
-            }}>
-            <Image
+          <View style={styles.largebox}>
+            <FastImage
               source={Images.ssl}
-              style={{width: 70}}
+              style={{width: '20%', height: 50}}
               resizeMode="contain"
             />
-            <View>
-              <Image source={Images.flag} resizeMode="contain" />
-            </View>
-            <Image
+            <FastImage
+              source={Images.flag}
+              style={{width: '50%', height: 75}}
+              resizeMode="contain"
+            />
+            <FastImage
               source={Images.secure}
-              style={{width: 70}}
+              style={{width: '20%', height: 50}}
               resizeMode="contain"
             />
           </View>
@@ -286,7 +298,7 @@ function Team() {
           </View>
           <View style={{paddingTop: 23}}>
             <Text style={styles.smallHeader}>PAYMENT METHOD:</Text>
-            <Image
+            <FastImage
               source={Images.card}
               style={styles.image}
               resizeMode="contain"
@@ -295,68 +307,10 @@ function Team() {
         </View>
         <View style={styles.boxContent}>
           <Text style={styles.invitationLink}>WAYS TO CONNECT WITH US:</Text>
-          <View style={styles.sharelinks}>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 10,
-              }}>
-              <FastImage
-                source={Images.whatsapp}
-                resizeMode={FastImage.resizeMode.contain}
-                style={{width: 50, height: 50}}
-              />
-              <Text style={styles.textwhite}>WhatsApp</Text>
-            </View>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 10,
-              }}>
-              <FastImage
-                source={Images.telegram}
-                resizeMode={FastImage.resizeMode.contain}
-                style={{width: 50, height: 50}}
-              />
-              <Text style={styles.textwhite}>Telegram</Text>
-            </View>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 10,
-              }}>
-              <FastImage
-                source={Images.email}
-                resizeMode={FastImage.resizeMode.contain}
-                style={{width: 50, height: 50}}
-              />
-              <Text style={styles.textwhite}>Email</Text>
-            </View>
-            <View
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: 10,
-              }}>
-              <FastImage
-                source={Images.sms}
-                resizeMode={FastImage.resizeMode.contain}
-                style={{width: 50, height: 50}}
-              />
-              <Text style={styles.textwhite}>SMS</Text>
-            </View>
-          </View>
+          {renderItem()}
         </View>
       </View>
     </ScrollView>
   );
 }
-
 export default React.memo(Team);

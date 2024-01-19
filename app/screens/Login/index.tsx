@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, TouchableOpacity, Alert} from 'react-native';
+import {View, Text} from 'react-native';
 import styles from './styles';
 import Textinput from '../../components/TextInput';
 import Button from '../../components/Button';
 import * as yup from 'yup';
 import {Formik} from 'formik';
 import yupFormSchemas from '../../modules/shared/yup/yupFormSchemas';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useDispatch, useSelector} from 'react-redux';
 import authActions from '../../modules/auth/authActions';
 import authSelectors from '../../modules/auth/authSelectors';
@@ -40,8 +39,6 @@ function Login(props: {navigation: any}) {
   };
 
   useEffect(() => {
-    console.log('im here the best');
-
     dispatch(authActions.doClearErrorMessage());
   }, []);
 

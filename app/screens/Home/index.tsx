@@ -12,6 +12,29 @@ function Home(props: any) {
   const {navigation} = props;
   const currentUser = useSelector(authSelectors.selectCurrentUser);
 
+  const paymentSucess = () => {
+    return (
+      <View
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'row',
+          gap: 5,
+        }}>
+        <Icon name="check-circle" size={15} color={'green'} />
+        <Text style={{color: 'green'}}>Payment Success</Text>
+      </View>
+    );
+  };
+
+  const Unpaid = () => {
+    return (
+      <View style={{display: 'flex'}}>
+        <Text style={{color: 'orange'}}>Unpaid</Text>
+      </View>
+    );
+  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={styles.ViewTop}>
@@ -92,10 +115,12 @@ function Home(props: any) {
             <Text style={{fontSize: 16, color: 'black'}}>Visa Details:</Text>
             <View style={{paddingTop: 16, display: 'flex', gap: 3}}>
               <Text>
-                <Text style={{fontWeight: '600'}}>Visa Type: </Text> {currentUser.coupon.title}
+                <Text style={{fontWeight: '600'}}>Visa Type: </Text>{' '}
+                {currentUser?.couponId?.title}
               </Text>
               <Text>
-                <Text style={{fontWeight: '600'}}>Stay Duration: </Text> {currentUser.coupon.noOfTimes}
+                <Text style={{fontWeight: '600'}}>Stay Duration: </Text>{' '}
+                {currentUser?.couponId?.noOfTimes}
               </Text>
               <Text>
                 <Text style={{fontWeight: '600'}}>Visa Start: </Text>
@@ -115,12 +140,18 @@ function Home(props: any) {
             <View style={{paddingTop: 16, display: 'flex', gap: 3}}>
               <Text>
                 <Text style={{fontWeight: '600'}}>Total Visa Fee:</Text>{' '}
-                {currentUser.coupon.discount}
+                {currentUser?.couponId?.discount}
               </Text>
-              <Text>
-                <Text style={{fontWeight: '600'}}>Payment Status:</Text>{' '}
-                {currentUser.payee}
-              </Text>
+              <View
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexDirection: 'row',
+                  gap: 10,
+                }}>
+                <Text style={{fontWeight: '600'}}>Payment Status:</Text>
+                {currentUser.payee === true ? paymentSucess() : Unpaid()}
+              </View>
               <Text>
                 <Text style={{fontWeight: '600'}}>Payment Method: </Text>[Credit
                 Card/Debit Card]

@@ -43,7 +43,6 @@ function AuthNavigator() {
         }}
       />
       <Stack.Screen name="Otp" component={OTP} options={{headerShown: false}} />
-
       <Stack.Screen
         name="SuccessPassword"
         component={SuccessPassword}

@@ -2,7 +2,7 @@ import Axios from 'axios';
 import AuthToken from '../../auth/authToken';
 
 const authAxios = Axios.create({
-  baseURL: 'http://192.168.90.76:8080/api',
+  baseURL: 'https://f2d1-83-110-151-155.ngrok-free.app/api',
 });
 
 authAxios.interceptors.request.use(
