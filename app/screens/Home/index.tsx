@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, Alert} from 'react-native';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/FontAwesome5'; // You can choose a different icon library if you prefer
@@ -8,12 +8,11 @@ import authSelectors from '../../modules/auth/authSelectors';
 import Dates from '../../shared/Dates';
 import {SafeAreaView} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
-import RNFetchBlob from 'rn-fetch-blob';
 import {downloadFile} from '../../shared/Download';
 function Home(props: any) {
   const {navigation} = props;
   const currentUser = useSelector(authSelectors.selectCurrentUser);
-
+  const [url, setUrl] = useState();
   const paymentSucess = () => {
     return (
       <View
@@ -35,6 +34,26 @@ function Home(props: any) {
         <Text style={{color: 'orange'}}>Unpaid</Text>
       </View>
     );
+  };
+
+  const disableItem = () => {
+    Alert.alert('Your document is still being prepared...');
+  };
+
+  const downloadItem = () => {
+    if (url) {
+      return (
+        <TouchableOpacity onPress={() => downloadFile(url)}>
+          <Icon name="download" color={'#a2703d'} size={24} />
+        </TouchableOpacity>
+      );
+    } else {
+      return (
+        <TouchableOpacity onPress={() => disableItem()}>
+          <Icon name="download" color={'#CCCCCC'} size={24} />
+        </TouchableOpacity>
+      );
+    }
   };
 
   return (
@@ -66,9 +85,7 @@ function Home(props: any) {
                 alignItems: 'center',
                 gap: 2,
               }}>
-              <TouchableOpacity onPress={() => downloadFile("https://www.africau.edu/images/default/sample.pdf")}>
-                <Icon name="download" color={'#a2703d'} size={24} />
-              </TouchableOpacity>
+              {downloadItem()}
             </View>
           </View>
           <View style={{paddingLeft: 20}}>
@@ -112,7 +129,6 @@ function Home(props: any) {
           </View>
         </View>
       </View>
-
       <View style={styles.validation}>
         <View style={styles.approved}>
           <View>

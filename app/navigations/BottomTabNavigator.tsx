@@ -36,7 +36,7 @@ function BottomTabNavigator() {
           if (route.name === 'Home') {
             iconName = 'address-card';
           } else if (route.name === 'Team') {
-            iconName = 'building';
+            iconName = 'info-circle';
           } else if (route.name === 'Profile') {
             iconName = 'user';
           }

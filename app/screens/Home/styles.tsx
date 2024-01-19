@@ -68,6 +68,7 @@ export default StyleSheet.create({
     paddingTop: 20,
     paddingBottom: 20,
     paddingLeft: 20,
+    height:290,
     gap: 26,
     backgroundColor: 'white',
     borderBottomLeftRadius: 10,

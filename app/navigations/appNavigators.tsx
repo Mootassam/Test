@@ -4,31 +4,42 @@ import PrivateNavigator from './privateNavigator';
 import selector from '../modules/auth/authSelectors';
 import {useSelector} from 'react-redux';
 import AuthToken from '../modules/auth/authToken';
-
+import SplashScreen from 'react-native-splash-screen';
+import {Platform} from 'react-native';
 function AppNavigators() {
   const currentUser = useSelector(selector.selectCurrentUser);
-  const [token, setToken] = useState<any>();
+  const [token, setToken] = useState<string | null>(null);
+  const [tokenLoaded, setTokenLoaded] = useState(false);
+
   const loadToken = async () => {
     try {
-      const data: string | null = await AuthToken.get();
+      const data = await AuthToken.get();
       setToken(data);
     } catch (error) {
       console.error('Error loading token:', error);
+    } finally {
+      setTokenLoaded(true);
     }
   };
 
-
-
   useEffect(() => {
+    if (Platform.OS === 'android') {
+      SplashScreen.hide();
+    }
     loadToken();
   }, [currentUser]);
+
+  const shouldShowAuthNavigator = useMemo(() => {
+    return !currentUser || !tokenLoaded;
+  }, [currentUser, tokenLoaded]);
+
   const renderItem = useMemo(() => {
-    return !currentUser || !token ? (
+    return shouldShowAuthNavigator ? (
       <AuthNavigator />
     ) : (
       <PrivateNavigator currentUser={currentUser} />
     );
-  }, [currentUser, token]);
+  }, [currentUser, shouldShowAuthNavigator]);
 
   return <>{renderItem}</>;
 }
