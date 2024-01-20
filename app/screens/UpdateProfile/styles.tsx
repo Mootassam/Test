@@ -1,4 +1,3 @@
-
 import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
@@ -22,6 +21,7 @@ export default StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
+    height: 60,
     gap: 21,
     alignItems: 'center',
   },

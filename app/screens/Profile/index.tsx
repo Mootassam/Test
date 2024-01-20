@@ -85,8 +85,6 @@ function Profile(props) {
     <View style={styles.linearGradient}>
       <View style={styles.content}>
         <View style={{display: 'flex', marginTop: 10}}>
-          {/* quick actions  */}
-          {/* List actions  */}
           <View style={styles.allactions}>
             <View
               style={{
@@ -106,7 +104,6 @@ function Profile(props) {
                 that your information is accurate for a smooth visa application
                 process.
               </Text>
-
               <FlatList
                 data={paymentList}
                 renderItem={renderActionItem}

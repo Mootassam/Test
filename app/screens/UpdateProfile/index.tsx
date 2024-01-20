@@ -20,27 +20,34 @@ function UpdateProfile() {
           </View>
           <View style={styles.singleDetail}>
             <Icon name="envelope" size={20} />
-            <TextInput keyboardType="email-address" value={currentUser.email}  editable={false} />
+            <TextInput
+              keyboardType="email-address"
+              value={currentUser.email}
+              editable={false}
+            />
           </View>
           <View style={styles.singleDetail}>
             <Icon name="phone" size={20} />
-            <TextInput value={currentUser.phoneNumber}  editable={false} />
+            <TextInput value={currentUser.phoneNumber} editable={false} />
           </View>
           <View style={styles.singleDetail}>
             <Icon name="birthday-cake" size={20} />
-            <TextInput value={Dates.Date(currentUser.bearthday)}  editable={false} />
+            <TextInput
+              value={Dates.Date(currentUser.bearthday)}
+              editable={false}
+            />
           </View>
           <View style={styles.singleDetail}>
             <Icon name="flag" size={20} />
-            <TextInput value={currentUser.nationality}  editable={false} />
+            <TextInput value={currentUser.nationality} editable={false} />
           </View>
           <View style={styles.singleDetail}>
             <Icon name="globe" size={20} />
-            <TextInput value={currentUser.country}  editable={false} />
+            <TextInput value={currentUser.country} editable={false} />
           </View>
           <View style={styles.singleDetail}>
-            <Icon name="map-marker-alt" size={20}  />
-            <TextInput value={currentUser.state}   editable={false}/>
+            <Icon name="map-marker-alt" size={20} />
+            <TextInput value={currentUser.state} editable={false} />
           </View>
         </View>
       </View>

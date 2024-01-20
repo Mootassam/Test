@@ -12,7 +12,11 @@ import {downloadFile} from '../../shared/Download';
 function Home(props: any) {
   const {navigation} = props;
   const currentUser = useSelector(authSelectors.selectCurrentUser);
-  const [url, setUrl] = useState();
+  const [url, setUrl] = useState(currentUser.passportDocument[0].downloadUrl);
+  const [image, setImage] = useState(currentUser.passportPhoto[0].downloadUrl || Images.user);
+
+  console.log(image);
+
   const paymentSucess = () => {
     return (
       <View
@@ -69,7 +73,7 @@ function Home(props: any) {
             }}>
             <View style={styles.circleView}>
               <Image
-                source={Images.user}
+                source={{uri:image}}
                 style={{width: '100%', height: '100%', borderRadius: 50}}
                 resizeMode="center"
               />
